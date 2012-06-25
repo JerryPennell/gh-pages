@@ -1,9 +1,11 @@
 <!-- Jerry Pennell -->
-<!-- Term 1206 -->
+<!-- Term 1207 -->
 <!-- Project 1 -->
 
 
 
 <!-- commit history -->
 
-Readme
+My Code branch is
+
+https://github.com/JerryPennell/gh-pages
