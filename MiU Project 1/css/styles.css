@@ -42,7 +42,7 @@ ul {
 
 #loadarea{
 	 display:block;
-	 padding-top:120px;
+	 padding-top:240px;
 	 
 }
 
@@ -65,7 +65,7 @@ ul {
    text-shadow: rgba(0,0,0,.4) 0 1px 0;
    color: white;
    font-size: 19px;
-   font-family: Georgia, serif;
+   font-family: "Comic Sans MS", "Courier New";
    text-decoration: none;
    vertical-align: middle;
    text-align:center;
@@ -73,6 +73,20 @@ ul {
    margin-left:auto;
    margin-right:auto;
    
+   }
+   
+   .front {
+	   text-align:left;
+	   margin-top:5px;
+	   background: #7D8A98;
+	   background: -webkit-gradient(linear, left top, left bottom, from(#CCC), to(#7D8A98));
+	   background: -webkit-linear-gradient(top, #CCC, #7D8A98);
+	   background: -moz-linear-gradient(top, #CCC, #7D8A98);
+	   background: -ms-linear-gradient(top, #CCC, #7D8A98);
+	   background: -o-linear-gradient(top, #CCC, #7D8A98);
+	   padding: 4px 25px;
+	   font-size: 15px;
+	   color:#000000;
    }
 .button:hover {
    border-top-color: #28597a;
@@ -113,17 +127,16 @@ ul {
    
    }
    
-   .subbtn:hover {
-   border-top-color: #28597a;
-   background: #28597a;
-   color: #ccc;
+
+   
+   .searchbtn {
+	 background-color:#F90;
+	 -moz-border-radius: 20px;
+     -webkit-border-radius: 20px;
+     -khtml-border-radius: 20px;
+     border-radius: 20px;      
    }
-  
-   .subbtn:active {
-	border-top-color: #1b435e;
-	background: #1b435e;
-	text-align: center;
-   }
+   
 
    .alig{
 	   margin-left:10px;
@@ -174,6 +187,11 @@ ul {
 	background: #CCA383;
 	padding: 6px;
 	font-weight: bold;
+	}
+	
+	.tileset {
+	  background: url(../images/tile.png);
+	  background-size:auto;	
 	}
 	
 /* test links for clear data, display data, add data */

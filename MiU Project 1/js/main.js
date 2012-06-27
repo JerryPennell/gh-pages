@@ -7,8 +7,12 @@
 //Wait until the DOM is ready
 window.addEventListener("DOMContentLoaded", function(){
 	
+	addEventListener("load", function() {
+    window.scrollTo(1, 0);
+    }, false);
+	
      //getElementById function
-     function $(x){
+     function ge(x){
            var theElement = document.getElementById(x);          //Pass in name for getting tag name by Id
            return theElement;								     //Returns the element
      }
@@ -17,7 +21,7 @@ window.addEventListener("DOMContentLoaded", function(){
      //Create select field element and populate with options
      function makeComics(){
          var     formTag = document.getElementsByTagName("form"), //formTag is an array of all the form tags
-		 selectLi    = $('select'),                               //assignment for select element
+		 selectLi    = ge('select'),                               //assignment for select element
 		 makeSelect  = document.createElement('select');          //creates a select element
 		 makeSelect.setAttribute("id","groups");                  //sets an atttribute for id called groups
          for(var i=0, j=comicGroups.length; i<j; i++){  		  //itterate over the options for the comicgroups variable
@@ -42,8 +46,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	 
      //Find value of the check box
      function getCheckboxValue(){								  
-       if($('need').checked){                                     //sees if the need check box is checked
-          needValue = $('need').value;
+       if(ge('need').checked){                                     //sees if the need check box is checked
+          needValue = ge('need').value;
        }else{
            needValue = "No";                                      //if the checkbox is not checked then it will set to value of No
        }
@@ -53,17 +57,17 @@ window.addEventListener("DOMContentLoaded", function(){
      function toggleControls(n){
         switch(n){
             case "on":                                            //Case statement to see if the variable is on for turning on the display
-                 $('comicForm').style.display ="none";            //Turns off the comicForm style element id
-                 $('clear').style.display="inline";               //Turns on the clear style element id
-                 $('displayLink').style.display ="none";          //Turns of the displayLink element id
-                 $('addNew').style.display = "inline";			  //Turns on the addNew element id
+                 ge('comicForm').style.display ="none";            //Turns off the comicForm style element id
+                 ge('clear').style.display="inline";               //Turns on the clear style element id
+                 ge('displayLink').style.display ="none";          //Turns of the displayLink element id
+                 ge('addNew').style.display = "inline";			  //Turns on the addNew element id
                  break;
             case "off":											  //If the toggle controls is off
-                 $('comicForm').style.display ="block";           //comicForm is set to block
-		         $('clear').style.display="inline";				  //clear element id is turned on
-		         $('displayLink').style.display ="inline";		  //displayLink is turned on
-                 $('addNew').style.display = "none";			  //addNew element id is turned off
-                 $('items').style.display = "none";               //items id is turned off
+                 ge('comicForm').style.display ="block";           //comicForm is set to block
+		         ge('clear').style.display="inline";				  //clear element id is turned on
+		         ge('displayLink').style.display ="inline";		  //displayLink is turned on
+                 ge('addNew').style.display = "none";			  //addNew element id is turned off
+                 ge('items').style.display = "none";               //items id is turned off
                  break;
             default:
                 return false;
@@ -87,15 +91,15 @@ window.addEventListener("DOMContentLoaded", function(){
           getSelectedRadio();													//Checks the selected radio button
           getCheckboxValue();													//Checks the checkbox value
           var item               = {};											//Items object created
-              item.publisher     = ["Publisher:",$('groups').value];			//Property for publisher created
-              item.cname         = ["Comic Name:",$('cname').value];			//Property for comic name created
-              item.iname         = ["Issue:",$('iname').value];					//Property for issue created
-              item.email         = ["Email:",$('email').value];                 //Property for email created
+              item.publisher     = ["Publisher:",ge('groups').value];			//Property for publisher created
+              item.cname         = ["Comic Name:",ge('cname').value];			//Property for comic name created
+              item.iname         = ["Issue:",ge('iname').value];					//Property for issue created
+              item.email         = ["Email:",ge('email').value];                 //Property for email created
               item.haveit        = ["Have it?:",haveitValue];                   //Property for Have it created
               item.need          = ["Needs appraisal:",needValue];              //Property for needs appraisal created
-              item.rating        = ["Rating:",$('rating').value];               //Property for creating rating is created
-              item.date          = ["Date:",$('date').value];					//Property for data is created
-              item.notes         = ["Notes:",$('notes').value];		            //Property for notes is created
+              item.rating        = ["Rating:",ge('rating').value];               //Property for creating rating is created
+              item.date          = ["Date:",ge('date').value];					//Property for data is created
+              item.notes         = ["Notes:",ge('notes').value];		            //Property for notes is created
               
               
           //Save all the data into local storage Use Stringify to convert our object to a string.          
@@ -117,7 +121,7 @@ window.addEventListener("DOMContentLoaded", function(){
          var makeList = document.createElement('ul');							//creates ul tag
          makeDiv.appendChild(makeList);											//appends ul to div tag
          document.body.appendChild(makeDiv);									//appends div tag with its child to body tag
-         $('items').style.display = "block";									//sets style for items to display
+         ge('items').style.display = "block";									//sets style for items to display
          for(var i=0, len=localStorage.length; i<len; i++){						//itterate the local storage
              var makeli = document.createElement('li');							//makes li tag
              var linksLi = document.createElement('li');					    //makes li tag for links edit-delete
@@ -203,10 +207,10 @@ window.addEventListener("DOMContentLoaded", function(){
 		  toggleControls("off");												//shows the form
 		  
 		  //populate the form fields with current localStorage values.
-		  $('groups').value = item.publisher[1];								//gets the stored key value of publisher
-		  $('cname').value = item.cname[1];										//gets the stored key value of the comic name
-		  $('iname').value = item.iname[1];										//gets the stored key value element of issue
-		  $('email').value = item.email[1];										//gets the stored key value element of email 
+		  ge('groups').value = item.publisher[1];								//gets the stored key value of publisher
+		  ge('cname').value = item.cname[1];										//gets the stored key value of the comic name
+		  ge('iname').value = item.iname[1];										//gets the stored key value element of issue
+		  ge('email').value = item.email[1];										//gets the stored key value element of email 
 		  var radios = document.forms[0].haveit;								//checks the value of the radio stored button value
 		  for(var i=0; i<radios.length; i++){									//itterate the radio set
 			  if(radios[i].value == "Yes" && item.haveit[1] == "Yes"){			//checking which values should be set
@@ -216,19 +220,19 @@ window.addEventListener("DOMContentLoaded", function(){
 			  }
 		  }
 		  if(item.need[1] == "Yes"){											//reviews the checkbox to see if it should be checked
-			  $('need').setAttribute("checked", "checked");
+			  ge('need').setAttribute("checked", "checked");
 		  }
-		  $('rating').value = item.rating[1];									//calls the rating value by key
+		  ge('rating').value = item.rating[1];									//calls the rating value by key
 		  document.forms[0].display_rate.value = item.rating[1];                //sets the visible rating 
-		  $('date').value = item.date[1];										//gets the date value by key
-		  $('notes').value = item.notes[1];										//gets the stored notes value by key
+		  ge('date').value = item.date[1];										//gets the date value by key
+		  ge('notes').value = item.notes[1];										//gets the stored notes value by key
 		  
 		  //Remove the intial listener from the input 'save comic' button.
 		  save.removeEventListener("click", storeData);
 		  
 		  //change Submit Button value to Edit Button
-		  $('submit').value = "Edit Comic";
-		  var editSubmit = $('submit');
+		  ge('submit').value = "Edit Comic";
+		  var editSubmit = ge('submit');
 		  //Save the key value established in this function as a property of the editSubmit event
 		  //so we can use that value when we save the data we edited
 		  editSubmit.addEventListener("click", validate);						//sets the validate listener to the edit submit
@@ -262,10 +266,10 @@ window.addEventListener("DOMContentLoaded", function(){
  
       function validate(e){														//Validates the input fields
 		 //Define the elements we want to check 
-		 var getGroup = $('groups');											//variable of the group of comic names was choosen
-		 var getCname = $('cname');												//variable a name was put in for the comic name
-		 var getIname = $('iname');												//variable to see if an issue number was put in
-		 var getEmail = $('email');												//variabel set to field email
+		 var getGroup = ge('groups');											//variable of the group of comic names was choosen
+		 var getCname = ge('cname');												//variable a name was put in for the comic name
+		 var getIname = ge('iname');												//variable to see if an issue number was put in
+		 var getEmail = ge('email');												//variabel set to field email
 		 
 		 //Reset Error Message
 		 errMsg.innerHTML = "";
@@ -326,18 +330,18 @@ window.addEventListener("DOMContentLoaded", function(){
      var comicGroups = ["-- Choose A Publisher --", "DC","Marvel","Image","Dark Horse"],   //List of comics to be passed in for the select
          haveitValue,																	   //Holding value for if we have it
          needValue = "No"  																   //default needs appraisal value
-         errMsg = $('errors');
+         errMsg = ge('errors');
      ;         
      makeComics();															               //calls the function for making the comics list
      
      
      //Set Link & Submit Click Events
      
-     var displayLink = $('displayLink');										//gets the tag id called displayLink
+     var displayLink = ge('displayLink');										//gets the tag id called displayLink
      displayLink.addEventListener("click", getData);					        //adds the eventlistener fo click to the displayLink to getData function
-     var clearLink =$('clear');													// gets the tag id called clear 
+     var clearLink =ge('clear');													// gets the tag id called clear 
      clearLink.addEventListener("click", clearLocal);					        //assigns an event listener of click to clearLocal data function for id tag clear
-     var save = $('submit');													//gets the tag id called submit
+     var save = ge('submit');													//gets the tag id called submit
      save.addEventListener("click", validate);									//adds the eventlistener of click to call validate before storeData
 
 
