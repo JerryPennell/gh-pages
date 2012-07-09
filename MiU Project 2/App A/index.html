@@ -4,27 +4,115 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <!-- Allow the content to be viewed on iphone -->
-        <meta name="viewport" content="width=device-width,user-scalable=no" />
+        
+  
+        <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+	    <meta name="HandheldFriendly" content="True">
+	    <meta name="MobileOptimized" content="320"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    
+	    <!-- Mobile IE needs ClearType for smoothing fonts -->
+	    <meta http-equiv="cleartype" content="on">
+        
         <!-- TemplateBeginEditable name="doctitle" -->
         <title>
             Comic Collector
         </title>
+        
+        <!-- StyleSheets under here -->
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
         <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+        
+        
+        <!-- JavaScript is normally at the end of the body, except for Modernizr which enables 
+        HTML5 elements & feature detects -->
+        <script src="js/libs/modernizr.custom.min.js" type="text/javascript"></script>
+        
     </head>
+    
     <body>
-      <header><h1>Comic Collector</h1></header> 
-      <!-- adds wrapper for the information area -->
-      <fieldset id="comicFieldSet" class="tileset">     
-          <div id="loadarea">
-          <form action="search.html">
-            <label for="iname">SEARCH :</label><br/><input type="text" id="iname" />
-            <input type="submit" value="GO" id="submit" class="searchbtn"/>
-          </form>
-          </div>
-      </fieldset>
-      <a href="search.html" class="button front">> BROWSE PUBLISHERS</a>
-      <a href="additem.html" class="button front">> ADD A COMIC</a>
+    
+      <div data-role="page" id="home">
+      
+        <!-- Provides a header for jquery mobile -->
+        <div data-role="header" data-position="fixed">
+			<br/>
+			<h1>Comic Collector</h1>
+			<a href="#find" data-icon="search" data-theme="b" class="ui-btn-right">Search</a>
+       </div>
+        
+        <!-- Provides a area for content from jquery mobile -->
+        <div data-role="content">
+          
+          <!-- adds wrapper for the information area -->
+	      <fieldset id="comicFieldSet" class="tileset">     
+	          <div id="loadarea">
+	              <!--
+                  <form id="search" action="search.html">
+		            <label for="iname">SEARCH :</label><br/><input type="text" id="iname" />
+		            <input type="submit" value="GO" id="submit" class="searchbtn"/>
+		          </form>
+                 
+                  <label for="search-mini">Search your comics:</label>
+                  <input type="search" name="search-mini" id="search-mini" value="" data-mini="true" />
+                   -->
+		       </div>
+	      </fieldset>
+	      
+	      <a href="additem.html" rel="external" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">ADD A COMIC</a>
+	    
+	    </div>
+	    
+	    <!-- provides a footer for jquery mobile -->
+	    <div data-role="footer" data-position="fixed" data-theme="b" data-mini="true">
+		    <div data-role="navbar" data-iconpos="left">
+					<ul>
+						<li><a href="#" data-icon="grid">Browse</a></li>
+						<li><a href="#" data-icon="check">Want List</a></li>
+					</ul>
+				</div><!-- /navbar -->
+		    </div>  
+        </div>
+      
+      
+      <!-- New page for search contents-->
+      
+      <div data-role="page" id="find"> 
+        
+        <!-- Provides a header for jquery mobile -->
+        <div data-role="header" data-position="fixed">
+			<a href="#home" data-icon="back">Back</a>
+			<br/>
+			<h1>Comic Collector</h1>
+			<a href="" data-icon="clear" data-theme="b">clear</a>
+        </div>
+        
+        <div data-role="content">
+			<ul id='list' data-role='listview' data-filter='true' data-inset='false'>
+			    <li id='a1'>
+			        <h3>ABC</h3>
+			        <p>this is ABC</p>
+			    </li>
+			    <li id='a2'>
+			        <h3>DEF</h3>
+			        <p>DEF is not ABC</p>
+			    </li>
+			    <li id='a3'>
+			        <h3>ImAGE</h3>
+			        <p>DC</p>
+			    </li>
+			</ul>​ 
+	    </div>
+	     
+	    <!-- provides a footer for jquery mobile -->
+		<div data-role="footer" data-position="fixed">
+		  <h4>Search Filter</h4>
+		</div>
+		   
+      </div>
+     
+	  <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
       <script src="js/main.js" type="text/javascript"></script>
     </body>
 </html>
