@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", function(){
              makeOption.innerHTML = optText;					  //makes inner html
              makeSelect.appendChild(makeOption);				  //appends to the child element
          }
-          selectLi.appendChild(makeSelect);                        //at the end of the object appends the select 
+         selectLi.appendChild(makeSelect);                        //at the end of the object appends the select 
       }
      
      //Find value of selected radio button
@@ -348,4 +348,4 @@ window.addEventListener("DOMContentLoaded", function(){
 
 
          
-});      
+});         

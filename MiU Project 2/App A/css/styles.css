@@ -17,8 +17,6 @@ img{
 }
  /* style for heading bar */  
  
-
-/*
 body > header h1{
     box-sizing: border-box;
     margin: 0;
@@ -33,20 +31,18 @@ body > header h1{
     background: url(../images/iPhoneToolbar.png) #6d84a2 repeat-x;
     border-bottom: 1px solid #2d3642;
 }
-*/
-
 
 ul {
 	-webkit-padding-start: 5px;
 }
 
 #questions{
-	-webkit-padding-start: 5px;
+	-webkit-padding-start: 40px;
 }
 
 #loadarea{
 	 display:block;
-	 padding-top:245px;
+	 padding-top:240px;
 	 
 }
 
@@ -92,7 +88,6 @@ ul {
 	   font-size: 15px;
 	   color:#000000;
    }
-/*
 .button:hover {
    border-top-color: #28597a;
    background: #28597a;
@@ -103,7 +98,6 @@ ul {
 	background: #1b435e;
 	text-align: center;
    }
-*/
    
 /* addItem.html */
 
@@ -152,6 +146,14 @@ ul {
 
 /* style for input fields */
 
+	.input input{
+	float:left;
+	font-size:12px;
+	padding:4px 2px;
+	border:solid 1px #069;
+	width:150px;
+	margin:2px 0 10px 10px;
+	}
 	
 	li {
 	color: #B4886B;
@@ -160,16 +162,17 @@ ul {
 	width: auto;
 	margin-top:5px;
 	margin-bottom:5px;
-	margin-right:10px;
 	}
 	
  
 /* border background and outline of fieldset */
 
    fieldset {
-    border-radius: 15px;   
-	border: 1px solid # 666;
-	background: #FDFDE4;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;   
+	border: 1px solid # 333;
+	background: #F7FAED;
 	padding: 3px;
 	margin-top:10px;
    }
@@ -182,9 +185,8 @@ ul {
     border-radius: 8px;   
 	border: 1px solid # 333;      
 	background: #CCA383;
-	padding: 10px;
+	padding: 6px;
 	font-weight: bold;
-	margin-top:5px;
 	}
 	
 	.tileset {
@@ -201,6 +203,10 @@ ul {
 			
 	}
 	
+	.sublinks:hover {
+		 color:#003399;
+		 text-decoration: underline overline;
+	}
 	
 
  /* for js elements */

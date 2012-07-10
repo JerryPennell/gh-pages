@@ -1,5 +1,5 @@
 //Jerry Pennell 1206
-//Project 1
+//Project 2
 //Mobile Interfaces and Usability
 //Mobile Development
 //Full Sail University

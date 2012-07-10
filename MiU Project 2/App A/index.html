@@ -38,7 +38,7 @@
         <div data-role="header" data-position="fixed">
 			<br/>
 			<h1>Comic Collector</h1>
-			<a href="#find" data-icon="search" data-theme="b" class="ui-btn-right">Search</a>
+			<a href="#search" data-icon="search" data-theme="b" class="ui-btn-right">Search</a>
        </div>
         
         <!-- Provides a area for content from jquery mobile -->
@@ -61,58 +61,73 @@
 	      
 	      <a href="additem.html" rel="external" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">ADD A COMIC</a>
 	    
-	    </div>
-	    
-	    <!-- provides a footer for jquery mobile -->
-	    <div data-role="footer" data-position="fixed" data-theme="b" data-mini="true">
-		    <div data-role="navbar" data-iconpos="left">
-					<ul>
-						<li><a href="#" data-icon="grid">Browse</a></li>
-						<li><a href="#" data-icon="check">Want List</a></li>
-					</ul>
-				</div><!-- /navbar -->
-		    </div>  
+		 </div> <!-- content -->
+		    
+		    <!-- provides a footer for jquery mobile -->
+		 <div data-role="footer" data-position="fixed" data-theme="b" data-mini="true">
+	        <div data-role="navbar" data-iconpos="left">
+				<ul>
+					<li><a href="#" data-icon="grid">Browse</a></li>
+					<li><a href="#" data-icon="check">Want List</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div> 
+			 
         </div>
       
       
       <!-- New page for search contents-->
       
-      <div data-role="page" id="find"> 
+      <div data-role="page" id="search"> 
         
         <!-- Provides a header for jquery mobile -->
         <div data-role="header" data-position="fixed">
 			<a href="#home" data-icon="back">Back</a>
 			<br/>
 			<h1>Comic Collector</h1>
-			<a href="" data-icon="clear" data-theme="b">clear</a>
+			<!-- <a href="#" onclick="clearFilter(); data-icon="clear" data-theme="b">clear</a> -->
         </div>
         
+
+	   
         <div data-role="content">
-			<ul id='list' data-role='listview' data-filter='true' data-inset='false'>
-			    <li id='a1'>
-			        <h3>ABC</h3>
-			        <p>this is ABC</p>
-			    </li>
-			    <li id='a2'>
-			        <h3>DEF</h3>
-			        <p>DEF is not ABC</p>
-			    </li>
-			    <li id='a3'>
-			        <h3>ImAGE</h3>
-			        <p>DC</p>
-			    </li>
-			</ul>​ 
+          <div data-role="fieldcontain"> 
+			<ul data-role='listview' data-filter='true' data-inset='true'>
+		      <li><a href="index.html" class="button front">All</a></li>
+		      <li><a href="index.html" class="button front">DC Comics</a></li>
+		      <li><a href="index.html" class="button front">Marvel Comics</a></li>
+		      <li><a href="index.html" class="button front">Image Comics</a></li>
+		      <li><a href="index.html" class="button front">Dark Horse Comics</a></li>
+			</ul>​      
+            <input type="button" onclick="clearFilter()" value="Clear"/>
+		  </div> 
 	    </div>
+	    
 	     
-	    <!-- provides a footer for jquery mobile -->
-		<div data-role="footer" data-position="fixed">
-		  <h4>Search Filter</h4>
-		</div>
+	 <!-- provides a footer for jquery mobile -->
+	    <div data-role="footer" data-position="fixed" data-theme="b" data-mini="true">
+		    <div data-role="navbar" data-iconpos="left">
+					<ul>
+						<li><a href="#" data-icon="grid">Browse</a></li>
+						<li><a href="#" data-icon="check">Want List</a></li>
+					</ul>
+			</div><!-- /navbar -->  
+        </div>
+
 		   
-      </div>
+      </div> <!-- / search page-->
      
 	  <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 	  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
-      <script src="js/main.js" type="text/javascript"></script>
+	  
+	  <!-- added this clear button functionality because UI standards to clear search results -->
+	  <script language="JavaScript">
+	    function clearFilter(){
+         $('input[data-type="search"]').val("");
+         $('input[data-type="search"]').trigger("keyup");
+          }
+	  </script>
+	  
+
     </body>
 </html>
