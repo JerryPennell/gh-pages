@@ -6,6 +6,14 @@
 
 //Wait until the DOM is ready
 window.addEventListener("DOMContentLoaded", function(){
+
+  //Before the page is created this will add a back button for the list drill downs
+
+   $(':jqmData(url^=search)').live('pagebeforecreate', 
+   function(event) {
+    $(this).filter(':jqmData(url*=ui-page)').find(':jqmData(role=header)')
+      .prepend('<a href="#" data-rel="back" data-icon="back">Back</a>')
+    });
 	
 	addEventListener("load", function() {
     window.scrollTo(1, 0);
@@ -31,7 +39,9 @@ window.addEventListener("DOMContentLoaded", function(){
              makeOption.innerHTML = optText;					  //makes inner html
              makeSelect.appendChild(makeOption);				  //appends to the child element
          }
-         selectLi.appendChild(makeSelect);                        //at the end of the object appends the select 
+         if(selectLi != null){
+           selectLi.appendChild(makeSelect);                        //at the end of the object appends the select 
+         }
       }
      
      //Find value of selected radio button
@@ -146,7 +156,27 @@ window.addEventListener("DOMContentLoaded", function(){
 		      makeSubList.appendChild(addHl);									//appends the element to the end of the ul set
          }
       }
+      
+      
+      
 	  
+	  //Function to get the data stored local storage for JQM
+      function getJQData(){
+      
+      JSONFormatter.format(json, {});
+      
+      var getLister = ge('lister');
+      var putHere = ge('jDataLoad');
+      putHere.appendChild(getLister);
+      
+      }
+      
+      //This is for the clear Filer button on the search page
+      function clearFilter(){
+         $('input[data-type="search"]').val("");
+         $('input[data-type="search"]').trigger("keyup");
+      }
+
 	  //New Get the image for the right category
 
 	  function getImage(catName, makeSubList){
@@ -337,15 +367,21 @@ window.addEventListener("DOMContentLoaded", function(){
      
      //Set Link & Submit Click Events
      
-     var displayLink = ge('displayLink');										//gets the tag id called displayLink
-     displayLink.addEventListener("click", getData);					        //adds the eventlistener fo click to the displayLink to getData function
-     var clearLink =ge('clear');													// gets the tag id called clear 
-     clearLink.addEventListener("click", clearLocal);					        //assigns an event listener of click to clearLocal data function for id tag clear
-     var save = ge('submit');													//gets the tag id called submit
-     save.addEventListener("click", validate);									//adds the eventlistener of click to call validate before storeData
-
-
-
+     var dataLoader = ge('dataLoader');	
+     var clearit = ge('clearit');											//adds listener for button
+     if(clearit){
+        clearit.addEventListener("click", clearFilter);
+     }
+     if(dataLoader){								  	                            //gets the tag id called dataLoader
+        dataLoader.addEventListener("click", getJQData);					    //adds the eventlistener fo click to the getJQData function  
+     }else{
+        var displayLink = ge('displayLink');								    //gets the tag id called displayLink
+        displayLink.addEventListener("click", getData);					        //adds the eventlistener fo click to the displayLink to getData function
+        var clearLink =ge('clear');											    // gets the tag id called clear 
+        clearLink.addEventListener("click", clearLocal);					    //assigns an event listener of click to clearLocal data function for id tag clear
+        var save = ge('submit');											    //gets the tag id called submit
+        save.addEventListener("click", validate);								//adds the eventlistener of click to call validate before storeData
+     }
 
          
 });         

@@ -42,7 +42,7 @@ ul {
 
 #loadarea{
 	 display:block;
-	 padding-top:240px;
+	 padding-top:250px;
 	 
 }
 
@@ -130,8 +130,8 @@ ul {
 
    
    .searchbtn {
-	 background-color:#F90;
-	 -moz-border-radius: 20px;
+     background-color:#F90;
+     -moz-border-radius: 20px;
      -webkit-border-radius: 20px;
      -khtml-border-radius: 20px;
      border-radius: 20px;      
@@ -180,19 +180,19 @@ ul {
  /*fieldset legend color tab */  
    
    fieldset legend {
-	-webkit-border-radius: 8px;
+    -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;   
-	border: 1px solid # 333;      
-	background: #CCA383;
-	padding: 6px;
-	font-weight: bold;
-	}
+    border: 1px solid # 333;      
+    background: #CCA383;
+    padding: 6px;
+    font-weight: bold;
+   }
 	
-	.tileset {
-	  background: url(../images/tile.png);
-	  background-size:auto;	
-	}
+   .tileset {
+    background: url(../images/tile.png);
+    background-size:auto;	
+    }
 	
 /* test links for clear data, display data, add data */
 	
