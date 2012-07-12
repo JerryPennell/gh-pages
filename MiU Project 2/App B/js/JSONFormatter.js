@@ -25,7 +25,7 @@ JSONFormatter = (function() {
       $.each(json2, function(k3, v3) {
         // object of objects
         if(typeof v3 == 'object') {
-          $('#' + settings.list_id + ' #' + ulId).append('<li><span>{</span> <ul id="' + ulId + '-' + k3 + '"></ul></li>');
+          $('#' + settings.list_id + ' #' + ulId).append('<li><span>{</span> <ul data-role="listview" id="' + ulId + '-' + k3 + '"></ul></li>');
           $.each(v3, function(k4, v4) {
             if(typeof v4 == 'object' && v4 != null) {
               $('#' + settings.list_id + ' #' + ulId + '-' + k3).append('<li>' + k4 + ' <span>{</span> <ul id="'+k4+'-'+loopCount+'"></ul></li>');

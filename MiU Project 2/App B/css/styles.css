@@ -47,6 +47,10 @@ ul {
 	 
 }
 
+.ui-li-thumb{
+ display: none;
+}
+
 /* Button for launching the app */
  .button {
    border-top: 1px solid #96d1f8;
