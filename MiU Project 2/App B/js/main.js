@@ -1,5 +1,5 @@
 //Jerry Pennell 1206
-//Project 4
+//Project 2
 //Visual Framworks (VFW)
 //Mobile Development
 //Full Sail University
@@ -7,14 +7,7 @@
 //Wait until the DOM is ready
 window.addEventListener("DOMContentLoaded", function(){
 
-  //Before the page is created this will add a back button for the list drill downs
 
-   $(':jqmData(url^=search)').live('pagebeforecreate', 
-   function(event) {
-    $(this).filter(':jqmData(url*=ui-page)').find(':jqmData(role=header)')
-      .prepend('<a href="#" data-rel="back" data-icon="back">Back</a>')
-    });
-	
 	addEventListener("load", function() {
     window.scrollTo(1, 0);
     }, false);
@@ -368,11 +361,11 @@ window.addEventListener("DOMContentLoaded", function(){
      //Set Link & Submit Click Events
      
      var dataLoader = ge('dataLoader');	
-     var clearit = ge('clearit');											//adds listener for button
+     var clearit = ge('clearit');											   //adds listener for clear button on search area
      if(clearit){
         clearit.addEventListener("click", clearFilter);
      }
-     if(dataLoader){								  	                            //gets the tag id called dataLoader
+     if(dataLoader){								  	                        //gets the tag id called dataLoader
         dataLoader.addEventListener("click", getJQData);					    //adds the eventlistener fo click to the getJQData function  
      }else{
         var displayLink = ge('displayLink');								    //gets the tag id called displayLink

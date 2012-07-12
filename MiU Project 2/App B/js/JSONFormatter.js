@@ -20,6 +20,7 @@ JSONFormatter = (function() {
     
     //loops through the objects to pull from JSON to list the items
     //For each object it will put that object into a span tag
+    
     loopObjectOfObjects = function(json2, ulId) {
       $.each(json2, function(k3, v3) {
         // object of objects
@@ -89,9 +90,7 @@ JSONFormatter = (function() {
     $(settings.appendTo).append(jsonList);
 
     $.each(json, function(key, val) {
-      
-      
-      
+
       if(val != null && typeof val == 'object') {
         var goObj = false;
         var goArray = false;
@@ -167,3 +166,13 @@ JSONFormatter = (function() {
   
 
 })();
+
+
+  //Before the page is created this will add a back button for the list drill downs
+
+   $(':jqmData(url^=search)').live('pagebeforecreate', 
+   function(event) {
+    $(this).filter(':jqmData(url*=ui-page)').find(':jqmData(role=header)')
+      .prepend('<a href="#" data-rel="back" data-icon="back">Back</a>')
+    });
+	
