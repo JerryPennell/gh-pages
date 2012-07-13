@@ -1,12 +1,13 @@
 //Jerry Pennell 1206
-//Project 4
+//Project 2
 //Visual Framworks (VFW)
 //Mobile Development
 //Full Sail University
 
 //Wait until the DOM is ready
 window.addEventListener("DOMContentLoaded", function(){
-	
+
+
 	addEventListener("load", function() {
     window.scrollTo(1, 0);
     }, false);
@@ -31,7 +32,9 @@ window.addEventListener("DOMContentLoaded", function(){
              makeOption.innerHTML = optText;					  //makes inner html
              makeSelect.appendChild(makeOption);				  //appends to the child element
          }
-         selectLi.appendChild(makeSelect);                        //at the end of the object appends the select 
+         if(selectLi != null){
+           selectLi.appendChild(makeSelect);                        //at the end of the object appends the select 
+         }
       }
      
      //Find value of selected radio button
@@ -146,7 +149,60 @@ window.addEventListener("DOMContentLoaded", function(){
 		      makeSubList.appendChild(addHl);									//appends the element to the end of the ul set
          }
       }
+      
+      
+      
 	  
+	  //Function to get the data stored local storage for JQM
+      function getJQData(){
+			
+         if(localStorage.length === 0){											//Checks to see if items are in local storage
+		   autoFillData(); 							                            //alert prompt there is no data found
+         }
+         //Write Data from Local Storage to the browser.
+         var makeDiv = document.createElement('div');							//creates a div tag 
+         makeDiv.setAttribute("id", "items");									//sets attributes for new div tag id called items
+         var makeList = document.createElement('ul');							//creates ul tag
+         makeDiv.appendChild(makeList);											//appends ul to div tag
+         document.body.appendChild(makeDiv);									//appends div tag with its child to body tag
+         ge('items').style.display = "block";									//sets style for items to display
+         for(var i=0, len=localStorage.length; i<len; i++){						//itterate the local storage
+             var makeli = document.createElement('li');							//makes li tag
+             var linksLi = document.createElement('li');					    //makes li tag for links edit-delete
+             makeList.appendChild(makeli);										//appends li to ul
+             var key = localStorage.key(i); 									//key for localstorage objects
+             var value = localStorage.getItem(key);								//value of the object by key
+             //Convert the string from local storage value back to an object by using JSON.parse()
+             var obj = JSON.parse(value);										//Json parsing of object
+             var makeSubList = document.createElement('ul');				    //creates the sublist ul element
+             makeli.appendChild(makeSubList);									//appends to li ul element
+			 getImage(obj.publisher[1], makeSubList);								//adds image for identification
+             for(var n in obj){													//itterates the item in the object
+                var makeSubli = document.createElement('li');					//creates element li 
+                makeSubList.appendChild(makeSubli);								//appends to sublist li
+                var optSubText = obj[n][0]+" "+obj[n][1];						//gets the text in the object
+                makeSubli.innerHTML = optSubText;								//adds the innerHtml element for the text
+                makeSubList.appendChild(linksLi);
+             }
+              makeItemLinks(localStorage.key(i), linksLi);                      //Create our edit and delete buttons/link for 
+			  var addHl = document.createElement('hr');							//adds a horizontal rule seperator for look
+			  addHl.setAttribute("id","genlist");								//adds id attribute for css to add styles
+		      makeSubList.appendChild(addHl);									//appends the element to the end of the ul set
+         }
+      
+      var getLister = ge('items');
+      var putHere = ge('jDataLoad');
+      putHere.appendChild(getLister);
+      
+      }
+      
+      
+      //This is for the clear Filer button on the search page
+      function clearFilter(){
+         $('input[data-type="search"]').val("");
+         $('input[data-type="search"]').trigger("keyup");
+      }
+
 	  //New Get the image for the right category
 
 	  function getImage(catName, makeSubList){
@@ -337,15 +393,33 @@ window.addEventListener("DOMContentLoaded", function(){
      
      //Set Link & Submit Click Events
      
-     var displayLink = ge('displayLink');										//gets the tag id called displayLink
-     displayLink.addEventListener("click", getData);					        //adds the eventlistener fo click to the displayLink to getData function
-     var clearLink =ge('clear');													// gets the tag id called clear 
-     clearLink.addEventListener("click", clearLocal);					        //assigns an event listener of click to clearLocal data function for id tag clear
-     var save = ge('submit');													//gets the tag id called submit
-     save.addEventListener("click", validate);									//adds the eventlistener of click to call validate before storeData
-
-
-
+    
+     var clearit = ge('clearit');											 //adds listener for clear button on search area
+     if(clearit){
+        clearit.addEventListener("click", clearFilter);
+     }
+     var dataLoader = ge('dataLoader');
+     if(dataLoader){								  	                    //gets the tag id called dataLoader
+        dataLoader.addEventListener("click", getJQData);					    //adds the eventlistener fo click to the getJQData function  
+     }
+      var browseDisplayLink = ge('browseDisplayLink');
+     if(browseDisplayLink){        								                 //gets the tag id called displayLink
+        browseDisplayLink.addEventListener("click", getJQData);					     //adds the eventlistener fo click to the displayLink to getData function
+     }
+     var displayLink = ge('displayLink');
+     if(displayLink){        								                 //gets the tag id called displayLink
+        displayLink.addEventListener("click", getData);					     //adds the eventlistener fo click to the displayLink to getData function
+     }
+     var clearLink =ge('clear');
+     if(clearLink){											                // gets the tag id called clear 
+        clearLink.addEventListener("click", clearLocal);					//assigns an event listener of click to clearLocal data function for id tag clear
+     }
+     var save = ge('submit');											    //gets the tag id called submit
+     if(save){
+        save.addEventListener("click", validate);								//adds the eventlistener of click to call validate before storeData
+     }
+     
+     
 
          
 });         
