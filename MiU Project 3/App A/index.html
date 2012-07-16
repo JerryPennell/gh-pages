@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<!-- Jerry Pennell -->
+<!-- Mobile Interfaces and Usability -->
+<!-- Project 2 -->
+<!-- Term 1206 -->
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+
+        <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+	    <meta name="HandheldFriendly" content="True">
+	    <meta name="MobileOptimized" content="320"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	    <!-- Mobile IE needs ClearType for smoothing fonts -->
+	    <meta http-equiv="cleartype" content="on">
+
+        <!-- TemplateBeginEditable name="doctitle" -->
+        <title>
+            Comic Collector Gold
+        </title>
+
+        <!-- StyleSheets under here -->
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jqstyles.css"/>
+
+
+        <!-- JavaScript is normally at the end of the body, except for Modernizr which enables
+        HTML5 elements & feature detects -->
+        <script src="js/libs/modernizr.custom.min.js" type="text/javascript"></script>
+
+    </head>
+
+    <body>
+
+      <div data-role="page" id="home">
+
+        <!-- Provides a header for jquery mobile -->
+        <div data-role="header" data-position="fixed">
+			<br/>
+			<a href="infinite.html" rel="external" data-theme="b" data-icon="star" data-iconpos="notext"></a>
+			<h1>Comic Collector A</h1>
+			<a href="#search" data-icon="search" data-theme="b" class="ui-btn-right">Search</a>
+       </div>
+
+        <!-- Provides a area for content from jquery mobile -->
+        <div data-role="content">
+
+          <!-- adds wrapper for the information area -->
+	      <fieldset id="comicFieldSet" class="tileset">
+	          <div id="loadarea">
+	     
+		       </div>
+	      </fieldset>
+
+	      <a href="additem.html" rel="external" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">ADD A COMIC</a>
+
+		 </div> <!-- content -->
+
+		    <!-- provides a footer for jquery mobile -->
+		 <div data-role="footer" data-position="fixed" data-theme="b" data-mini="true">
+	        <div data-role="navbar" data-iconpos="left">
+				<ul>
+					<li><a href="#browse" id="dataLoader" data-icon="grid">Browse</a></li>	
+					<li><a href="../App B/index.html" rel="external" data-icon="gear">Bronze App Link</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div>
+
+        </div>
+
+
+      <!-- Show this page as future browse window -->
+		<div data-role = "page" id="browse">
+		   
+			 <!-- Provides a header for jquery mobile -->
+	        <div data-role="header" data-position="fixed">
+				<a href="#home" data-icon="home" data-theme="b" >Home</a>
+				<br/>
+				<h1>Browse Comics</h1>
+				<a href="#search" data-icon="search" data-theme="b" class="ui-btn-right">Search</a>
+
+	        </div>
+	        
+	        <div data-role="content">
+                <!--loads data -->
+                <div data-role="fieldcontain" id="jDataLoad">
+                
+		        
+		        </div><!-- DATA LOAD-->
+	       </div><!-- content-->
+	       
+	        <!-- provides a footer for jquery mobile browse-->
+	       <div data-role="footer" data-position="fixed" data-theme="b" data-mini="true">
+		     <div data-role="navbar" data-iconpos="left">
+					<ul>
+						<li><a href="#"  data-icon="grid">Browse</a></li>
+						<li><a href="../App B/index.html" rel="external" data-icon="gear">Bronze App Link</a></li>
+					</ul>
+			</div><!-- /navbar -->
+           </div>
+
+		</div><!--page dataLoader-->
+
+
+
+      <!-- New page for search contents-->
+
+      <div data-role="page" id="search">
+
+        <!-- Provides a header for jquery mobile -->
+        <div data-role="header" data-position="fixed">
+			<a href="#home" data-icon="home" data-theme="b" >Home</a>
+			<br/>
+			<h1>Category Search</h1>
+        </div>
+
+       <!-- search categories-->
+
+        <div data-role="content">
+          <div data-role="fieldcontain">
+			<ul data-role='listview' data-filter='true' data-inset='true' data-mini="true" data-theme="b">
+		      <!-- Begin All category -->
+		      <li>
+		         <h3>All</h3>
+		          <p>Get all comics</p>
+		          <ul>
+		             <li>All Comics Issues
+						<ul>
+							<li><a href="#">Comic All 1</a></li>
+							<li><a href="#">Comic All 2</a></li>
+							<li><a href="#">Comic All 3</a></li>
+						</ul>
+					</li>
+				  </ul> 
+			   </li>
+			   
+			   <!-- Begin Dark Horse category -->
+			   <li>
+			      <a href="#">	
+			      <img src="images/Dark Horse.png" alt="Dark Horse" class="ui-li-icon">
+				  <h3 id="spaced">Dark Horse Comics</h3>
+		          <p id="spaced">Publisher - Dark Horse Comics</p>
+		          </a>
+		          <ul>
+		             <li>Dark Horse Issues
+						<ul>
+							<li><a href="#">Comic Dark Horse 1</a></li>
+							<li><a href="#">Comic Dark Horse 2</a></li>
+							<li><a href="#">Comic Dark Horse 3</a></li>
+						</ul>
+					</li>
+				  </ul>
+				 </li>
+				 <!-- End Dark Horse category -->
+				 
+				 <!-- Begin DC category -->
+				 <li>
+				 <a href="#">	
+			      <img src="images/DC.png" alt="DC" class="ui-li-icon">
+				  <h3 id="spaced">DC Comics</h3>
+		          <p id="spaced">Publisher - Detective Comics</p>
+		          </a>  
+		          <ul>
+		             <li>DC Comics Issues
+						<ul>
+							<li><a href="#">Comic DC 1</a></li>
+							<li><a href="#">Comic DC 2</a></li>
+							<li><a href="#">Comic DC 3</a></li>
+						</ul>
+					</li>
+				  </ul> 
+				  </li> 
+				  <!-- End DC category -->
+				  
+				  <!-- Begin image category -->
+				  <li>
+				  <a href="#">	
+			      <img src="images/Image.png" alt="Image" class="ui-li-icon">
+				  <h3 id="spaced">Image Comics</h3>
+		          <p id="spaced">Publisher - Image Comics</p>
+		          </a>  
+		          <ul>
+		             <li>Image Comics Issues
+						<ul>
+						    <li><a href="#">Comic Image 1</a></li>
+							<li><a href="#">Comic Image 2</a></li>
+							<li><a href="#">Comic Image 3</a></li>
+						</ul>
+					</li>
+				  </ul>
+				  </li>
+				  <!-- end image category -->
+				  
+				  <!-- Begin marvel category -->
+				  <li> 
+				  <a href="#">	
+			      <img src="images/Marvel.png" alt="Marvel" class="ui-li-icon">
+				  <h3 id="spaced">Marvel Comics</h3>
+		          <p id="spaced">Publisher - Image Comics</p>
+		          </a>  
+		          <ul>
+		             <li>Marvel Comics Issues
+						<ul>
+							<li><a href="#">Comic Marvel 1</a></li>
+							<li><a href="#">Comic Marvel 2</a></li>
+							<li><a href="#">Comic Marvel 3</a></li>
+						</ul>
+					</li>
+				  </ul>  
+		         </li>
+		         <!-- end marvel category -->
+		    </ul>
+		      
+			
+            <input type="button" id="clearit" value="Clear"/>
+		  </div><!-- field contain-->
+	    </div><!-- content-->
+
+
+	 <!-- provides a footer for jquery mobile -->
+	    <div data-role="footer" data-position="fixed" data-theme="b" data-mini="true">
+		    <div data-role="navbar" data-iconpos="left">
+					<ul>
+						<li><a href="#" id="browseDisplayLink" data-icon="grid">Browse</a></li>
+						<li><a href="../App B/index.html" rel="external" data-icon="gear">Bronze App Link</a></li>
+					</ul>
+			</div><!-- /navbar -->
+        </div><!--end footer for search -->
+
+      </div> <!-- / search page-->
+
+	  <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+	  <script type="text/javascript" src="js/main.js"></script>
+	  <script type="text/javascript" src="js/JSONFormatter.js"></script>
+	  <script type="text/javascript" src="js/json.js"></script>
+
+    </body>
+</html>

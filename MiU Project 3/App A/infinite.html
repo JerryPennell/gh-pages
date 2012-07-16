@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Infinite List Pattern</title>
+    <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    
+    
+    <!-- creates a header when the docuemnt is ready -->
+    <!-- calls a way point lib to generate more against the header and footer-->
+    <script>
+        var i = 0;
+    
+        $(document).bind("ready", function(){
+
+            console.log($('#footerel'));
+            
+            $('#header').waypoint(function (a, b) {
+                
+                console.log("header", a, b);
+            });
+            
+            <!-- for next 20 append more -->
+            for(; i<20; i++)
+            {
+    
+                $("#list").append($("<li><a href=\"index.html\"><img src=\"#\" /><h3>" + i + "</h3><p>Item goes here</p></a></li>"));
+            }
+            
+            $("#list").listview('refresh');
+            
+            $('#footer').waypoint(function (a, b) {
+                
+                $("#list").append($("<li><a href=\"index.html\"><img src=\"#\" /><h3>" + i++ + "</h3><p>Item goes here</p></a></li>"));
+                $("#list").listview('refresh');
+                $('#footer').waypoint({ offset: '100%'    });
+            }, { offset: '100%'    });
+            
+        });
+        
+    </script>
+    
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+    <script type="text/javascript" src="js/libs/waypoints.min.js"></script>
+</head>
+<body>
+
+<div data-role="page">
+    
+    
+
+    <div id="header" data-role="header" data-position="fixed">
+        <a href="index.html" rel="external" data-icon="back" data-theme="b" >Back</a>
+		<br/>
+        <h1>Infinite list pattern</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">    
+        <div class="content-primary">    
+            <ul data-role="listview" id="list">
+            </ul>
+        </div>
+    </div><!-- /content -->
+    
+    
+    <!-- provides a footer for jquery mobile -->
+	    <div data-role="footer" id="footer" data-position="fixed" data-theme="a" data-mini="true">
+		    <div data-role="navbar" data-iconpos="left">
+					<ul>
+						<li><a href="#" data-icon="search" class="ui-disabled">Search Feed</a></li>
+						<li><a href="#" data-icon="check" class="ui-disabled">Want List</a></li>
+					</ul>
+			</div><!-- /navbar -->
+        </div><!--end footer for infinate  -->
+
+
+</div><!-- /page -->
+
+</body>
