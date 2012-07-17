@@ -3,7 +3,7 @@
 /* Jerry Pennell*/
 /* Term 1206    */
 /* Mobile Interfaces and Usability */
-/* Project 2    */
+/* Project 3    */
    
 /* iPhone [portrait + landscape] */
 @media screen and (max-device-width: 485px){
@@ -13,72 +13,25 @@ img{
      max-width:100%;
      height:auto;
     }
-
-
 }
- /* style for heading bar */  
  
-body > header h1{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 10px;
-    line-height: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    text-shadow: rgba(0,0,0,.4) 0 1px 0;
-    text-overflow: ellipsis;
-    color: #FFFFFF;
-    background: url(../images/iPhoneToolbar.png) #6d84a2 repeat-x;
-    border-bottom: 1px solid #2d3642;
-}
-
 ul {
 	-webkit-padding-start: 5px;
 }
 
 #questions{
-	-webkit-padding-start: 40px;
+	-webkit-padding-start: 5px;
 }
 
 #loadarea{
 	 display:block;
-	 padding-top:250px;
-	 
+	 padding-top:250px; 
 }
 
 .ui-li-thumb{
  display: none;
 }
 
-/* Button for launching the app */
- .button {
-   border-top: 1px solid #96d1f8;
-   background: #65a9d7;
-   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
-   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
-   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
-   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
-   background: -o-linear-gradient(top, #3e779d, #65a9d7);
-   padding: 12.5px 25px;
-   -webkit-border-radius: 8px;
-   -moz-border-radius: 8px;
-   border-radius: 8px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: white;
-   font-size: 19px;
-   font-family: "Comic Sans MS", "Courier New";
-   text-decoration: none;
-   vertical-align: middle;
-   text-align:center;
-   display:block;
-   margin-left:auto;
-   margin-right:auto;
-   
-   }
    
    .front {
 	   text-align:left;
@@ -93,72 +46,19 @@ ul {
 	   font-size: 15px;
 	   color:#000000;
    }
-.button:hover {
-   border-top-color: #28597a;
-   background: #28597a;
-   color: #ccc;
-   }
-.button:active {
-	border-top-color: #1b435e;
-	background: #1b435e;
-	text-align: center;
-   }
-   
-/* addItem.html */
 
-.subbtn {
-   float:right;
-   border-top: 1px solid #96d1f8;
-   background: #65a9d7;
-   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
-   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
-   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
-   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
-   background: -o-linear-gradient(top, #3e779d, #65a9d7);
-   padding: 10px 10px;
-   -webkit-border-radius: 8px;
-   -moz-border-radius: 8px;
-   border-radius: 8px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: white;
-   font-size: 15px;
-   font-family: Georgia, serif;
-   text-decoration: none;
-   text-align:center;
-   display:block;
-   
-   }
-   
-
-   
-   .searchbtn {
-     background-color:#F90;
-     -moz-border-radius: 20px;
-     -webkit-border-radius: 20px;
-     -khtml-border-radius: 20px;
-     border-radius: 20px;      
-   }
-   
 
    .alig{
 	   margin-left:10px;
    }
    
-
+   .fieldpx {
+      margin-left:5px;
+   
+   }
 
 /* style for input fields */
 
-	.input input{
-	float:left;
-	font-size:12px;
-	padding:4px 2px;
-	border:solid 1px #069;
-	width:150px;
-	margin:2px 0 10px 10px;
-	}
 	
 	li {
 	color: #B4886B;
@@ -167,52 +67,43 @@ ul {
 	width: auto;
 	margin-top:5px;
 	margin-bottom:5px;
+	margin-right:10px;
 	}
 	
  
 /* border background and outline of fieldset */
 
    fieldset {
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;   
-	border: 1px solid # 333;
-	background: #F7FAED;
+    border-radius: 15px;   
+	border: 1px solid #666;
+	background: #FDFDE4;
 	padding: 3px;
 	margin-top:10px;
+   }
+   
+   .bordr {
+   border: 1px solid #000;
    }
    
  /*fieldset legend color tab */  
    
    fieldset legend {
-    -webkit-border-radius: 8px;
+	-webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;   
-    border: 1px solid # 333;      
-    background: #CCA383;
-    padding: 6px;
-    font-weight: bold;
-   }
+	border: 1px solid # 333;      
+	background: #CCA383;
+	padding: 10px;
+	font-weight: bold;
+	margin-top:5px;
+	
+	}
 	
    .tileset {
     background: url(../images/tile.png);
     background-size:auto;	
     }
-	
-/* test links for clear data, display data, add data */
-	
-	.sublinks {
-		color:#39C;
-		text-decoration:none;
-		margin:15px;
-			
-	}
-	
-	.sublinks:hover {
-		 color:#003399;
-		 text-decoration: underline overline;
-	}
-	
+
 
  /* for js elements */
  

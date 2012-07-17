@@ -323,9 +323,9 @@ window.addEventListener("DOMContentLoaded", function(){
       function validate(e){														//Validates the input fields
 		 //Define the elements we want to check 
 		 var getGroup = ge('groups');											//variable of the group of comic names was choosen
-		 var getCname = ge('cname');												//variable a name was put in for the comic name
-		 var getIname = ge('iname');												//variable to see if an issue number was put in
-		 var getEmail = ge('email');												//variabel set to field email
+		 var getCname = ge('cname');											//variable a name was put in for the comic name
+		 var getIname = ge('iname');											//variable to see if an issue number was put in
+		 var getEmail = ge('email');											//variable set to field email
 		 
 		 //Reset Error Message
 		 errMsg.innerHTML = "";
