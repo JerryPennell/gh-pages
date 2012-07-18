@@ -61,11 +61,11 @@
 	               <li><input type="checkbox" id="need" value="Yes" class="checkbox" data-mini="true"/><label for="need">Needs appraisal</label></li>
 	               <li>
 	                  <label for="rating">Rating:</label>
-	                  <input type="range" name="rating" id="rating" min="0" max="10" step="1" value="0" onchange="display_rate.value=this.value" data-mini="true"/>
+	                  <input placeholder="1" type="range" name="rating" id="rating" min="0" max="10" step="1" onchange="display_rate.value=this.value" data-mini="true"/>
 	                  <!-- <output name="display_rate" for="rating"></output> -->
 	               </li>
-	               <li><label for="date">Published:</label><input type="date" id="date" data-mini="true"/></li>
-	               <li><label for="notes">Notes</label><textarea id="notes" data-mini="true"></textarea></li>
+	               <li><label for="date">Published:</label><input id="date" type="date" data-mini="true"/></li>
+	               <li><label for="notes">Notes</label><textarea placeholder="Enter in comic notes" id="notes" data-mini="true"></textarea></li>
 	          </ul>
 	          <input type="submit" value="Save Comic" id="submit" data-theme="b"/>
 	        </fieldset>
@@ -92,11 +92,13 @@
     </div>
 
       <!-- JQuery mobile libraries -->
-      <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script> <!-- This breaks my code -->
+      <script src="http://code.jquery.com/jquery.min.js"></script> <!-- This breaks my code -->
 	  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+	  <script src="js/libs/jquery.defaultvalue.js" type="text/javascript"></script>
 	  <!-- personal libraries -->
       <script src="js/json.js" type="text/javascript"></script>
 	  <script src="js/main.js" type="text/javascript"></script>
+	   <script src="js/addcomics.js" type="text/javascript"></script>
    </body>
 </html>
 
