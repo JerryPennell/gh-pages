@@ -12,31 +12,31 @@
 	<meta name="robots" content="index, follow" />
 	<meta name="viewport" content="width=device-width,user-scalable=no" />
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
-	
+
 	<title>Add Comic</title>
 	<!-- begining of css -->
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/styles.css"/>	
-	
-	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables 
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+
+	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables
          HTML5 elements & feature detects -->
     <script src="js/libs/modernizr.custom.min.js" type="text/javascript"></script>
-    
+
  </head>
- 
+
  <body>
    <div data-role="page" id="additem">
-   
+
      <div id="header" data-role="header" data-position="fixed">
         <a href="index.html" rel="external" data-icon="home" data-theme="b" >Home</a>
 		<br/>
         <h1>Add Comic</h1>
     </div><!-- /header -->
-    
-     <div data-role="content">    
-  
+
+     <div data-role="content">
+
 	 <div class="content-primary" data-mini="true" data-theme="b" data-shadow="true">
-	 
+
 	   <!-- begining of comic form -->
 	    <form action="#" method="post" id="comicForm">
 	       <fieldset>
@@ -45,8 +45,9 @@
 	          <span class="fieldpx">* fields are required.</span>
 	          <ul id="errors"></ul>
 	          <ul id="questions" data-inset="true">
-	               <li><label for="select">*Publisher:</label></li>
-	               <li id="select" data-mini="true"></li>
+	               <li><label for="select">*Publisher:</label>
+	               <li id="err"><select id="groups" data-inset="true" data-mini="true" data-placeholder="true"><option value="-- Choose A Publisher --">-- Choose A Publisher --</option></select>
+	               </li>
 	               <li><label for="cname">*Comic name:</label><input type="text" id="cname" data-mini="true"/></li>
 	               <li><label for="iname">*Issue:</label><input type="text" id="iname" data-mini="true"/></li>
 	               <li><label for="email">*Collectors Email:</label><input type="email" id="email" data-mini="true"/></li>
@@ -70,14 +71,14 @@
 	        </fieldset>
 	      </form>
 	      <!-- begining of nav for testing data -->
-	      
+
 	      <nav id="nav">
 	          <a href="#" id="clear" class="sublinks">Clear Stored Data</a>
 	          <a href="#" id="displayLink" class="sublinks">Display Data</a>
 	          <a href="additem.html" id="addNew" class="sublinks" style="display:none;">Add New Item</a>
 	     </nav>
 	  </div>
-	  
+
 	</div> <!-- content -->
 	   <!-- provides a footer for jquery mobile browse-->
 	       <div data-role="footer" data-position="fixed" data-theme="b" data-mini="true">
@@ -89,7 +90,7 @@
 			</div><!-- /navbar -->
            </div><!-- end footer -->
     </div>
-      
+
       <!-- JQuery mobile libraries -->
       <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script> <!-- This breaks my code -->
 	  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>

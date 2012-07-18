@@ -22,19 +22,16 @@ window.addEventListener("DOMContentLoaded", function(){
      //Create select field element and populate with options
      function makeComics(){
          var     formTag = document.getElementsByTagName("form"), //formTag is an array of all the form tags
-		 selectLi    = ge('select'),                               //assignment for select element
-		 makeSelect  = document.createElement('select');          //creates a select element
-		 makeSelect.setAttribute("id","groups");                  //sets an atttribute for id called groups
+		         getSelect = ge('groups');                        //assignment for select element
+
          for(var i=0, j=comicGroups.length; i<j; i++){  		  //itterate over the options for the comicgroups variable
              var makeOption = document.createElement('option');   //adds the option if item is found in the array
              var optText = comicGroups[i];						  //Adds the item in the array
              makeOption.setAttribute("value", optText);			  //value for the option item
              makeOption.innerHTML = optText;					  //makes inner html
-             makeSelect.appendChild(makeOption);				  //appends to the child element
+             getSelect.appendChild(makeOption);				  //appends to the child element
          }
-         if(selectLi != null){
-           selectLi.appendChild(makeSelect);                        //at the end of the object appends the select 
-         }
+         
       }
      
      //Find value of selected radio button
@@ -326,10 +323,11 @@ window.addEventListener("DOMContentLoaded", function(){
 		 var getCname = ge('cname');											//variable a name was put in for the comic name
 		 var getIname = ge('iname');											//variable to see if an issue number was put in
 		 var getEmail = ge('email');											//variable set to field email
+		 var getGroupErr = ge('err');
 		 
 		 //Reset Error Message
 		 errMsg.innerHTML = "";
-		 getGroup.style.border ="1px solid black";								//comic publisher border set back to orginal type
+		 getGroupErr.style.border ="none";								//comic publisher border set back to orginal type
 		 getCname.style.border ="1px solid black";								//comic name border field set back to orginal color
 		 getIname.style.border ="1px solid black";								//comic issue name set back to orginal color
 		 getEmail.style.border ="1px solid black";								//email border for field set back to orginal color
@@ -339,7 +337,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		 //Group Validation
 		 if(getGroup.value === "-- Choose A Publisher --"){					    //validates the comic publisher
 			 var groupError = "Please choose a comic publisher.";				//error message choosing a publisher
-			 getGroup.style.border ="1px solid red";							//changes the field to show an error
+			 getGroupErr.style.border ="1px solid red";							//changes the field to show an error
 			 messageAry.push(groupError);										//adds the error to the array
 		 }
 		 
@@ -383,7 +381,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	 }
      
      //variable defaults
-     var comicGroups = ["-- Choose A Publisher --", "DC","Marvel","Image","Dark Horse"],   //List of comics to be passed in for the select
+     var comicGroups = ["DC","Marvel","Image","Dark Horse"],   //List of comics to be passed in for the select
          haveitValue,																	   //Holding value for if we have it
          needValue = "No"  																   //default needs appraisal value
          errMsg = ge('errors');
@@ -422,4 +420,5 @@ window.addEventListener("DOMContentLoaded", function(){
      
 
          
-});         
+});      
+

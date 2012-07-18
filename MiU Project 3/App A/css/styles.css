@@ -56,18 +56,21 @@ ul {
       margin-left:5px;
    
    }
+   
+   .redborder{
+     border:1px solid red;
+   }
 
 /* style for input fields */
 
 	
 	li {
 	color: #B4886B;
-	font-weight: bold;
 	display: block;
 	width: auto;
 	margin-top:5px;
 	margin-bottom:5px;
-	margin-right:10px;
+	margin-right:15px;
 	}
 	
  
