@@ -23,14 +23,15 @@ window.addEventListener("DOMContentLoaded", function(){
      function makeComics(){
          var     formTag = document.getElementsByTagName("form"), //formTag is an array of all the form tags
 		         getSelect = ge('groups');                        //assignment for select element
-
-         for(var i=0, j=comicGroups.length; i<j; i++){  		  //itterate over the options for the comicgroups variable
-             var makeOption = document.createElement('option');   //adds the option if item is found in the array
-             var optText = comicGroups[i];						  //Adds the item in the array
-             makeOption.setAttribute("value", optText);			  //value for the option item
-             makeOption.innerHTML = optText;					  //makes inner html
-             getSelect.appendChild(makeOption);				  //appends to the child element
-         }
+         if(getSelect){
+	         for(var i=0, j=comicGroups.length; i<j; i++){  		  //itterate over the options for the comicgroups variable
+	             var makeOption = document.createElement('option');   //adds the option if item is found in the array
+	             var optText = comicGroups[i];						  //Adds the item in the array
+	             makeOption.setAttribute("value", optText);			  //value for the option item
+	             makeOption.innerHTML = optText;					  //makes inner html
+	             getSelect.appendChild(makeOption);				  //appends to the child element
+	         }
+	     }
          
       }
      
@@ -110,7 +111,7 @@ window.addEventListener("DOMContentLoaded", function(){
       
 	  //Function to get the data stored local storage
       function getData(){
-         toggleControls("on");													//Turns on the controls for display 
+         //toggleControls("on");													//Turns on the controls for display 
          if(localStorage.length === 0){											//Checks to see if items are in local storage
            alert("There is no data in Local Storage so default data was added.");  //alert there is no localstorage data
 		   autoFillData(); 							                            //alert prompt there is no data found
@@ -226,7 +227,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	  function makeItemLinks(key, linksLi){
 		  //add edit single item link
 		  var editLink = document.createElement('a');							//Creates anchor tag
-		  editLink.href = "#";													//sets the value to pound tag
+		  editLink.href = "#additem";													//sets the value to pound tag
 		  editLink.key = key;													//gets the key for the item being edited
 		  var editText = "Edit Comic";									    	//Creates text of Edit comic	
 		  editLink.addEventListener("click", editItem);							//Adds the event listener for the edit item link
@@ -240,7 +241,8 @@ window.addEventListener("DOMContentLoaded", function(){
 		  
 		  //add delete single item link
 		  var deleteLink = document.createElement('a');							//adds an anchor tag for the delete link
-		  deleteLink.href = "#";												//adds the link value to pound going same page
+		  deleteLink.href = "additem.html";												//adds the link value to pound going same page
+		  deleteLink.rel ="external";
 		  deleteLink.key = key;													//sets the key to the comic being deleted
 		  var deleteText = "Delete Comic";										//creates the text to delete the comic
 		  deleteLink.addEventListener("click", deleteItem);						//adds the event listener to delete the item
@@ -252,19 +254,20 @@ window.addEventListener("DOMContentLoaded", function(){
 	  
 	  // Edits an Item from the list 
 	  function editItem(){
+	         console.log("editing items");
 		  //Grab the data from our item from Local Storage
 		  var value = localStorage.getItem(this.key);							//gets the item the selected key item from localStorage
 		  var item = JSON.parse(value);											//parses the retrieved value
 		  
 		  //Show the form
-		  toggleControls("off");												//shows the form
+		 // toggleControls("off");												//shows the form
 		  
 		  //populate the form fields with current localStorage values.
 		  ge('groups').value = item.publisher[1];								//gets the stored key value of publisher
 		  ge('cname').value = item.cname[1];										//gets the stored key value of the comic name
 		  ge('iname').value = item.iname[1];										//gets the stored key value element of issue
 		  ge('email').value = item.email[1];										//gets the stored key value element of email 
-		  var radios = document.forms[0].haveit;								//checks the value of the radio stored button value
+		  var radios = document.forms[0].haveit;								//checks the value of the radio stored button value		  		  
 		  for(var i=0; i<radios.length; i++){									//itterate the radio set
 			  if(radios[i].value == "Yes" && item.haveit[1] == "Yes"){			//checking which values should be set
 				  radios[i].setAttribute("checked", "checked");
@@ -272,11 +275,13 @@ window.addEventListener("DOMContentLoaded", function(){
 				  radios[i].setAttribute("checked", "checked");
 			  }
 		  }
+		  console.log("need "+item.need[1]);
 		  if(item.need[1] == "Yes"){											//reviews the checkbox to see if it should be checked
 			  ge('need').setAttribute("checked", "checked");
+			  //ge('need').setAttribute("class", "ui-icon-checkbox-on");
 		  }
 		  ge('rating').value = item.rating[1];									//calls the rating value by key
-		  document.forms[0].display_rate.value = item.rating[1];                //sets the visible rating 
+		  document.forms[0].rating.value = item.rating[1];                //sets the visible rating 
 		  ge('date').value = item.date[1];										//gets the date value by key
 		  ge('notes').value = item.notes[1];										//gets the stored notes value by key
 		  
@@ -298,7 +303,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		  if(ask){																//if yes its ok to delete
 			  localStorage.removeItem(this.key);								//removed the key from local storage
 			  alert("Comic was deleted!!");									    //tells us the comic was deleted
-			  window.location.reload();											//reloads the window
+			  //window.location.reload();											//reloads the window
 		  }else{
 			  alert("Comic was NOT deleted.");								    //Otherwise the comic was not deleted
 		  }
@@ -327,7 +332,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		 
 		 //Reset Error Message
 		 errMsg.innerHTML = "";
-		 getGroupErr.style.border ="none";								//comic publisher border set back to orginal type
+		 getGroupErr.style.border ="none";							         	//comic publisher border set back to orginal type
 		 getCname.style.border ="1px solid black";								//comic name border field set back to orginal color
 		 getIname.style.border ="1px solid black";								//comic issue name set back to orginal color
 		 getEmail.style.border ="1px solid black";								//email border for field set back to orginal color

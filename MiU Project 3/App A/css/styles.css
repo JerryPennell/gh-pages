@@ -32,6 +32,11 @@ ul {
  display: none;
 }
 
+.sublinks{
+  margin-left:160px;
+  text-decoration:none;
+}
+
    
    .front {
 	   text-align:left;
@@ -59,6 +64,10 @@ ul {
    
    .redborder{
      border:1px solid red;
+   }
+   
+   .checkbox{
+     width:95px;
    }
 
 /* style for input fields */
@@ -115,3 +124,11 @@ ul {
 	background-color: #666;
 	height: 5px;
 	}
+	
+/*validator plugin */
+	label.error{
+	display:block;
+	margin:10px;
+	color:#cc0000;
+	}
+	
