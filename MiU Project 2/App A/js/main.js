@@ -1,5 +1,5 @@
 //Jerry Pennell 1206
-//Project 2
+//Project 3
 //Visual Framworks (VFW)
 //Mobile Development
 //Full Sail University
@@ -22,19 +22,17 @@ window.addEventListener("DOMContentLoaded", function(){
      //Create select field element and populate with options
      function makeComics(){
          var     formTag = document.getElementsByTagName("form"), //formTag is an array of all the form tags
-		 selectLi    = ge('select'),                               //assignment for select element
-		 makeSelect  = document.createElement('select');          //creates a select element
-		 makeSelect.setAttribute("id","groups");                  //sets an atttribute for id called groups
-         for(var i=0, j=comicGroups.length; i<j; i++){  		  //itterate over the options for the comicgroups variable
-             var makeOption = document.createElement('option');   //adds the option if item is found in the array
-             var optText = comicGroups[i];						  //Adds the item in the array
-             makeOption.setAttribute("value", optText);			  //value for the option item
-             makeOption.innerHTML = optText;					  //makes inner html
-             makeSelect.appendChild(makeOption);				  //appends to the child element
-         }
-         if(selectLi != null){
-           selectLi.appendChild(makeSelect);                        //at the end of the object appends the select 
-         }
+		         getSelect = ge('groups');                        //assignment for select element
+         if(getSelect){
+	         for(var i=0, j=comicGroups.length; i<j; i++){  		  //itterate over the options for the comicgroups variable
+	             var makeOption = document.createElement('option');   //adds the option if item is found in the array
+	             var optText = comicGroups[i];						  //Adds the item in the array
+	             makeOption.setAttribute("value", optText);			  //value for the option item
+	             makeOption.innerHTML = optText;					  //makes inner html
+	             getSelect.appendChild(makeOption);				  //appends to the child element
+	         }
+	     }
+         
       }
      
      //Find value of selected radio button
@@ -55,28 +53,7 @@ window.addEventListener("DOMContentLoaded", function(){
            needValue = "No";                                      //if the checkbox is not checked then it will set to value of No
        }
      }
-     
-     //Toggles te view of the style add area or display area
-     function toggleControls(n){
-        switch(n){
-            case "on":                                            //Case statement to see if the variable is on for turning on the display
-                 ge('comicForm').style.display ="none";            //Turns off the comicForm style element id
-                 ge('clear').style.display="inline";               //Turns on the clear style element id
-                 ge('displayLink').style.display ="none";          //Turns of the displayLink element id
-                 ge('addNew').style.display = "inline";			  //Turns on the addNew element id
-                 break;
-            case "off":											  //If the toggle controls is off
-                 ge('comicForm').style.display ="block";           //comicForm is set to block
-		         ge('clear').style.display="inline";				  //clear element id is turned on
-		         ge('displayLink').style.display ="inline";		  //displayLink is turned on
-                 ge('addNew').style.display = "none";			  //addNew element id is turned off
-                 ge('items').style.display = "none";               //items id is turned off
-                 break;
-            default:
-                return false;
-        }
-     }
-     
+    
      
      //Save data into local storage
      function storeData(key){       
@@ -110,47 +87,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		  console.log("This is an id: " +id);               					//Showing the id creation
           alert("Comic Saved");													//Tells the Comic is saved
       }
-      
-	  //Function to get the data stored local storage
-      function getData(){
-         toggleControls("on");													//Turns on the controls for display 
-         if(localStorage.length === 0){											//Checks to see if items are in local storage
-           alert("There is no data in Local Storage so default data was added.");  //alert there is no localstorage data
-		   autoFillData(); 							                            //alert prompt there is no data found
-         }
-         //Write Data from Local Storage to the browser.
-         var makeDiv = document.createElement('div');							//creates a div tag 
-         makeDiv.setAttribute("id", "items");									//sets attributes for new div tag id called items
-         var makeList = document.createElement('ul');							//creates ul tag
-         makeDiv.appendChild(makeList);											//appends ul to div tag
-         document.body.appendChild(makeDiv);									//appends div tag with its child to body tag
-         ge('items').style.display = "block";									//sets style for items to display
-         for(var i=0, len=localStorage.length; i<len; i++){						//itterate the local storage
-             var makeli = document.createElement('li');							//makes li tag
-             var linksLi = document.createElement('li');					    //makes li tag for links edit-delete
-             makeList.appendChild(makeli);										//appends li to ul
-             var key = localStorage.key(i); 									//key for localstorage objects
-             var value = localStorage.getItem(key);								//value of the object by key
-             //Convert the string from local storage value back to an object by using JSON.parse()
-             var obj = JSON.parse(value);										//Json parsing of object
-             var makeSubList = document.createElement('ul');				    //creates the sublist ul element
-             makeli.appendChild(makeSubList);									//appends to li ul element
-			 getImage(obj.publisher[1], makeSubList);								//adds image for identification
-             for(var n in obj){													//itterates the item in the object
-                var makeSubli = document.createElement('li');					//creates element li 
-                makeSubList.appendChild(makeSubli);								//appends to sublist li
-                var optSubText = obj[n][0]+" "+obj[n][1];						//gets the text in the object
-                makeSubli.innerHTML = optSubText;								//adds the innerHtml element for the text
-                makeSubList.appendChild(linksLi);
-             }
-              makeItemLinks(localStorage.key(i), linksLi);                      //Create our edit and delete buttons/link for 
-			  var addHl = document.createElement('hr');							//adds a horizontal rule seperator for look
-			  addHl.setAttribute("id","genlist");								//adds id attribute for css to add styles
-		      makeSubList.appendChild(addHl);									//appends the element to the end of the ul set
-         }
-      }
-      
-      
+       
       
 	  
 	  //Function to get the data stored local storage for JQM
@@ -229,7 +166,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	  function makeItemLinks(key, linksLi){
 		  //add edit single item link
 		  var editLink = document.createElement('a');							//Creates anchor tag
-		  editLink.href = "#";													//sets the value to pound tag
+		  editLink.href = "#additem";													//sets the value to pound tag
+		  editLink.rel = "external";
 		  editLink.key = key;													//gets the key for the item being edited
 		  var editText = "Edit Comic";									    	//Creates text of Edit comic	
 		  editLink.addEventListener("click", editItem);							//Adds the event listener for the edit item link
@@ -243,11 +181,12 @@ window.addEventListener("DOMContentLoaded", function(){
 		  
 		  //add delete single item link
 		  var deleteLink = document.createElement('a');							//adds an anchor tag for the delete link
-		  deleteLink.href = "#";												//adds the link value to pound going same page
+		  deleteLink.href = "additem.html";										//adds the link value to pound going same page
+		  deleteLink.rel ="external";
 		  deleteLink.key = key;													//sets the key to the comic being deleted
 		  var deleteText = "Delete Comic";										//creates the text to delete the comic
 		  deleteLink.addEventListener("click", deleteItem);						//adds the event listener to delete the item
-		  deleteLink.setAttribute("class","sublinks");
+		  deleteLink.setAttribute("class","sublinks force-reload");
 		  deleteLink.innerHTML = deleteText;									//adds the link to the html
 		  linksLi.appendChild(deleteLink);										//appends the deletelink child 
 	  }
@@ -255,44 +194,51 @@ window.addEventListener("DOMContentLoaded", function(){
 	  
 	  // Edits an Item from the list 
 	  function editItem(){
+	         console.log("editing items");
 		  //Grab the data from our item from Local Storage
 		  var value = localStorage.getItem(this.key);							//gets the item the selected key item from localStorage
 		  var item = JSON.parse(value);											//parses the retrieved value
 		  
 		  //Show the form
-		  toggleControls("off");												//shows the form
-		  
-		  //populate the form fields with current localStorage values.
-		  ge('groups').value = item.publisher[1];								//gets the stored key value of publisher
-		  ge('cname').value = item.cname[1];										//gets the stored key value of the comic name
-		  ge('iname').value = item.iname[1];										//gets the stored key value element of issue
-		  ge('email').value = item.email[1];										//gets the stored key value element of email 
-		  var radios = document.forms[0].haveit;								//checks the value of the radio stored button value
-		  for(var i=0; i<radios.length; i++){									//itterate the radio set
-			  if(radios[i].value == "Yes" && item.haveit[1] == "Yes"){			//checking which values should be set
-				  radios[i].setAttribute("checked", "checked");
-			  }else if(radios[i].value == "No" && item.haveit[1] == "No"){		//if not yes value set the no value in set
-				  radios[i].setAttribute("checked", "checked");
+		 // toggleControls("off");												//shows the form
+		  if (ge('groups') != null){
+		    
+			  //populate the form fields with current localStorage values.
+			  ge('groups').value = item.publisher[1];								//gets the stored key value of publisher
+			  ge('cname').value = item.cname[1];								    //gets the stored key value of the comic name
+			  ge('iname').value = item.iname[1];								    //gets the stored key value element of issue
+			  ge('email').value = item.email[1];									//gets the stored key value element of email 
+			  var radios = document.forms[0].haveit;								//checks the value of the radio stored button value		  		  
+			  for(var i=0; i<radios.length; i++){									//itterate the radio set
+				  if(radios[i].value == "Yes" && item.haveit[1] == "Yes"){			//checking which values should be set
+					  radios[i].setAttribute("checked", "checked");
+				  }else if(radios[i].value == "No" && item.haveit[1] == "No"){		//if not yes value set the no value in set
+					  radios[i].setAttribute("checked", "checked");
+				  }
 			  }
-		  }
-		  if(item.need[1] == "Yes"){											//reviews the checkbox to see if it should be checked
-			  ge('need').setAttribute("checked", "checked");
-		  }
-		  ge('rating').value = item.rating[1];									//calls the rating value by key
-		  document.forms[0].display_rate.value = item.rating[1];                //sets the visible rating 
-		  ge('date').value = item.date[1];										//gets the date value by key
-		  ge('notes').value = item.notes[1];										//gets the stored notes value by key
-		  
-		  //Remove the intial listener from the input 'save comic' button.
-		  save.removeEventListener("click", storeData);
-		  
-		  //change Submit Button value to Edit Button
-		  ge('submit').value = "Edit Comic";
-		  var editSubmit = ge('submit');
-		  //Save the key value established in this function as a property of the editSubmit event
-		  //so we can use that value when we save the data we edited
-		  editSubmit.addEventListener("click", validate);						//sets the validate listener to the edit submit
-		  editSubmit.key = this.key;											//sets to key to the selected key edited
+			  console.log("need "+item.need[1]);
+			  if(item.need[1] == "Yes"){											//reviews the checkbox to see if it should be checked
+				  ge('need').setAttribute("checked", "checked");
+				  //ge('need').setAttribute("class", "ui-icon-checkbox-on");
+			  }
+			  ge('rating').value = item.rating[1];									//calls the rating value by key
+			  document.forms[0].rating.value = item.rating[1];                      //sets the visible rating 
+			  ge('date').value = item.date[1];										//gets the date value by key
+			  ge('notes').value = item.notes[1];										//gets the stored notes value by key
+			  
+			  //Remove the intial listener from the input 'save comic' button.
+			  save.removeEventListener("click", storeData);
+			  
+			  //change Submit Button value to Edit Button
+			  ge('submit').value = "Edit Comic";
+			  var editSubmit = ge('submit');
+			  //Save the key value established in this function as a property of the editSubmit event
+			  //so we can use that value when we save the data we edited
+			  editSubmit.addEventListener("click", validate);						//sets the validate listener to the edit submit
+			  editSubmit.key = this.key;	
+		  }else{
+		    $('#loadarea').load('rel="additem.html" #additem');
+		  }										//sets to key to the selected key edited
 	  }
 	  
 	  //Deletes an item from the list
@@ -301,7 +247,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		  if(ask){																//if yes its ok to delete
 			  localStorage.removeItem(this.key);								//removed the key from local storage
 			  alert("Comic was deleted!!");									    //tells us the comic was deleted
-			  window.location.reload();											//reloads the window
+			  //window.location.reload();											//reloads the window
 		  }else{
 			  alert("Comic was NOT deleted.");								    //Otherwise the comic was not deleted
 		  }
@@ -323,13 +269,14 @@ window.addEventListener("DOMContentLoaded", function(){
       function validate(e){														//Validates the input fields
 		 //Define the elements we want to check 
 		 var getGroup = ge('groups');											//variable of the group of comic names was choosen
-		 var getCname = ge('cname');												//variable a name was put in for the comic name
-		 var getIname = ge('iname');												//variable to see if an issue number was put in
-		 var getEmail = ge('email');												//variabel set to field email
+		 var getCname = ge('cname');											//variable a name was put in for the comic name
+		 var getIname = ge('iname');											//variable to see if an issue number was put in
+		 var getEmail = ge('email');											//variable set to field email
+		 var getGroupErr = ge('err');
 		 
 		 //Reset Error Message
 		 errMsg.innerHTML = "";
-		 getGroup.style.border ="1px solid black";								//comic publisher border set back to orginal type
+		 getGroupErr.style.border ="none";							         	//comic publisher border set back to orginal type
 		 getCname.style.border ="1px solid black";								//comic name border field set back to orginal color
 		 getIname.style.border ="1px solid black";								//comic issue name set back to orginal color
 		 getEmail.style.border ="1px solid black";								//email border for field set back to orginal color
@@ -339,7 +286,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		 //Group Validation
 		 if(getGroup.value === "-- Choose A Publisher --"){					    //validates the comic publisher
 			 var groupError = "Please choose a comic publisher.";				//error message choosing a publisher
-			 getGroup.style.border ="1px solid red";							//changes the field to show an error
+			 getGroupErr.style.border ="1px solid red";							//changes the field to show an error
 			 messageAry.push(groupError);										//adds the error to the array
 		 }
 		 
@@ -383,7 +330,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	 }
      
      //variable defaults
-     var comicGroups = ["-- Choose A Publisher --", "DC","Marvel","Image","Dark Horse"],   //List of comics to be passed in for the select
+     var comicGroups = ["DC","Marvel","Image","Dark Horse"],   //List of comics to be passed in for the select
          haveitValue,																	   //Holding value for if we have it
          needValue = "No"  																   //default needs appraisal value
          errMsg = ge('errors');
@@ -406,10 +353,6 @@ window.addEventListener("DOMContentLoaded", function(){
      if(browseDisplayLink){        								                 //gets the tag id called displayLink
         browseDisplayLink.addEventListener("click", getJQData);					     //adds the eventlistener fo click to the displayLink to getData function
      }
-     var displayLink = ge('displayLink');
-     if(displayLink){        								                 //gets the tag id called displayLink
-        displayLink.addEventListener("click", getData);					     //adds the eventlistener fo click to the displayLink to getData function
-     }
      var clearLink =ge('clear');
      if(clearLink){											                // gets the tag id called clear 
         clearLink.addEventListener("click", clearLocal);					//assigns an event listener of click to clearLocal data function for id tag clear
@@ -422,4 +365,5 @@ window.addEventListener("DOMContentLoaded", function(){
      
 
          
-});         
+});      
+

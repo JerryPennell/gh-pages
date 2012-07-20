@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <!-- Jerry Pennell -->
-<!-- Mobile Interfaces and Usability -->
 <!-- Term 1206 -->
 <html>
  <head>
@@ -16,52 +15,126 @@
 
 	<title>Add Comic</title>
 	<!-- begining of css -->
-	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
- </head>
- <body>
-   <header><h1>Add Comic</h1></header>
-   <!-- begining of comic form -->
-    <form action="#" method="post" id="comicForm">
-       <fieldset id="comicFieldSet">
-          <legend>Comic Data</legend>
-          <span>* fields are required.</span>
-          <ul id="errors"></ul>
-          <ul id="questions">
-               <li id="select"><label>*Publisher:</label><br/></li>
-               <li><label for="cname">*Comic name:</label><br/><input type="text" id="cname" /></li>
-               <li><label for="iname">*Issue:</label><br/><input type="text" id="iname" /></li>
-               <li><label for="email">*Collectors Email:</label><br/><input type="email" id="email" /></li>
-               <li>
-                   <label>Have it?</label>
-                   <ul class="checkbox">
-                      <li><input type="radio" id="yes" value="Yes" name="haveit"><label for="yes">Yes</label></li>
-                      <li><input type="radio" id="no" value="No" name="haveit"><label for="no">No</label></li>
-                   </ul>
-               </li>
-               <li><input type="checkbox" id="need" value="Yes" class="checkbox" /><label for="need">Needs appraisal</label></li>
-               <li>
-                  <label for="rating">Rating:</label>
-                  <br/>
-                  <input type="range" name="rating" id="rating" min="0" max="10" step="1" value="0" onchange="display_rate.value=this.value" />
-                  <output name="display_rate" for="rating"></output>
-               </li>
-               <li><label for="date">Published:</label><br/><input type="date" id="date" /></li>
-               <li><label for="notes">Notes</label><br /><textarea id="notes"></textarea></li>
-          </ul>
-          <input type="submit" value="Save Comic" id="submit" class="subbtn"/>
-       </fieldset>
-      </form>
-      <!-- begining of nav for testing data -->
-      <nav id="nav">
-          <a href="index.html" id="back" class="sublinks">Back</a>
-          <a href="#" id="clear" class="sublinks">Clear Stored Data</a>
-          <a href="#" id="displayLink" class="sublinks">Display Data</a>
-          <a href="additem.html" id="addNew" class="sublinks" style="display:none;">Add New Item</a>
-     </nav>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 
+	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables
+         HTML5 elements & feature detects -->
+    <script src="js/libs/modernizr.custom.min.js" type="text/javascript"></script>
+
+ </head>
+
+ <body>
+   <div data-role="page" id="additem">
+
+     <div id="header" data-role="header" data-position="fixed">
+        <a href="index.html" rel="external" data-icon="home" data-theme="b" >Home</a>
+		<br/>
+        <h1>Add Comic</h1>
+    </div><!-- /header -->
+
+     <div data-role="content">
+
+	 <div class="content-primary" data-mini="true" data-theme="b" data-shadow="true">
+
+	   <!-- begining of comic form -->
+	    <form action="#" method="post" id="comicForm">
+	       <fieldset>
+	          <legend>Comic Data</legend>
+	          <br/>
+	          <span class="fieldpx">* fields are required.</span>
+	          <ul id="questions" data-inset="true">
+	               <li><label for="select">*Publisher:</label>
+	               <li id="err"><select id="groups" name="groups" class="required" data-inset="true" data-mini="true" data-placeholder="true"><option value="-- Choose A Publisher --">-- Choose A Publisher --</option></select>
+	               </li>
+	               <li><label for="cname">*Comic name:</label><input type="text" id="cname" name="cname" data-mini="true" class="required"/></li>
+	               <li><label for="iname">*Issue:</label><input type="text" id="iname" name="iname" data-mini="true" class="required number"/></li>
+	               <li><label for="email">*Collectors Email:</label><input type="email" id="email" name="email" data-mini="true" class="required email"/></li>
+	               <li>
+	                   <label>Have it?</label>
+	                   <ul class="checkbx">
+	                      <li><input type="radio" id="yes" value="Yes" name="haveit" data-mini="true"><label for="yes">Yes</label></li>
+	                      <li><input type="radio" id="no" value="No" name="haveit" data-mini="true"><label for="no">No</label></li>
+	                   </ul>
+	               </li>
+	               <li><input type="checkbox" id="need" name="need" value="Yes" data-mini="true"/><label for="need" id="needl">Needs appraisal</label></li>
+	               <li>
+	                  <label for="rating">Rating:</label>
+	                  <input placeholder="1" type="range" name="rating" id="rating" min="0" max="10" step="1" value="" data-mini="true"/>
+	                  <output name="display_rate" for="rating"></output>
+	               </li>
+	               <li><label for="date">Published:</label><input id="date" name="date" type="date" data-mini="true"/></li>
+	               <li><label for="notes">Notes</label><textarea placeholder="Enter in comic notes" id="notes" name="notes" data-mini="true"></textarea></li>
+	          </ul>
+	          <ul id="errors"></ul>
+	          <input type="submit" value="Save Comic" id="submit" class="force-reload" data-theme="b"/>
+	          <a id="reset" data-role="button">Reset Form</a>
+
+	        </fieldset>
+	      </form>
+	      <!-- begining of nav for testing data -->
+
+	      <nav id="nav">
+	          <a href="#" id="clear" class="subClearlinks">Clear Stored Data</a>
+	          <!-- a href="#" id="displayLink" class="sublinks">Display Data</a-->
+	          <!-- a href="additem.html" rel="external" id="addNew" class="sublinks force-reload" style="display:none;">Add New Item</a -->
+	     </nav>
+	  </div>
+
+	</div> <!-- content -->
+	   <!-- provides a footer for jquery mobile browse-->
+	       <div data-role="footer" data-position="fixed" data-theme="b" data-mini="true">
+		     <div data-role="navbar" data-iconpos="left">
+					<ul>
+						<li><a href="#browse"  id="browseDisplayLink" data-icon="grid">Browse</a></li>
+						<li><a href="../App%20B/index.html" rel="external" data-icon="gear">Bronze App Link</a></li>
+					</ul>
+			</div><!-- /navbar -->
+           </div><!-- end footer -->
+    </div>
+
+    <!-- Show this page as future browse window -->
+		<div data-role = "page" id="browse">
+
+			 <!-- Provides a header for jquery mobile -->
+	        <div data-role="header" data-position="fixed">
+				<a href="additem.html" rel="external" data-icon="back" data-theme="b">Back</a>
+				<br/>
+				<h1>Browse Comics</h1>
+				<a href="#search" data-icon="search" data-theme="b" class="ui-btn-right">Search</a>
+
+	        </div>
+
+	        <div data-role="content">
+                <!--loads data -->
+                <div data-role="fieldcontain" id="jDataLoad">
+
+
+		        </div><!-- DATA LOAD-->
+	       </div><!-- content-->
+
+	        <!-- provides a footer for jquery mobile browse-->
+	       <div data-role="footer" data-position="fixed" data-theme="b" data-mini="true">
+		     <div data-role="navbar" data-iconpos="left">
+					<ul>
+						<li><a href="additem.html" rel="external" data-icon="plus">Add a comic</a></li>
+						<li><a href="../App%20B/index.html" rel="external" data-icon="gear">Bronze App Link</a></li>
+					</ul>
+			</div><!-- /navbar -->
+           </div>
+
+		</div><!--page dataLoader-->
+
+      <!-- JQuery mobile libraries -->
+      <script src="http://code.jquery.com/jquery.min.js"></script> <!-- This breaks my code -->
+	  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+	  <script src="js/libs/jquery.defaultvalue.js" type="text/javascript"></script>
+	  <script src="js/libs/jquery.validate.min.js" type="text/javascript"></script>
+
+	  <!-- personal libraries -->
+	  <script src="js/addcomics.js" type="text/javascript"></script>
       <script src="js/json.js" type="text/javascript"></script>
-      <script src="js/main.js" type="text/javascript"></script>
+	  <script src="js/main.js" type="text/javascript"></script>
+
    </body>
 </html>
-
-
