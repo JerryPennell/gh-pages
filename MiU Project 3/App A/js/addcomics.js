@@ -19,6 +19,33 @@ $('a.force-reload').live('click', function(e) {
 
 });
 
+//Clear form function
+
+    $.fn.clearForm = function() {
+      // iterate each matching form
+      return this.each(function() {
+        // iterate the elements within the form
+        $(':input', this).each(function() {
+          var type = this.type, tag = this.tagName.toLowerCase();
+          if (type == 'text' || type == 'password' || type == 'email' || tag == 'textarea')
+            this.value = '';
+          else if (type == 'checkbox' || type == 'radio')
+            this.checked = false;
+          else if (tag == 'select')
+            this.selectedIndex = -1;
+        });
+      });
+    };
+
+
+
+
+//Resets the form
+$('#reset').click(function() {
+    $('#comicForm').clearForm(); 
+    
+});
+
 
 $(document).bind('pageinit', function(){
     
@@ -35,6 +62,10 @@ $(document).bind('pageinit', function(){
         day = "0" + day;
     var today = now.getFullYear() + '-' + month + '-' + day;
     $('#date').val(today);
+    
+    
+    
+    
 
   $("#need").attr ("checked", "checked").checkboxradio ("refresh");
 
@@ -47,6 +78,8 @@ $(document).bind('pageinit', function(){
             parseComicForm(data);
     }
   });
+
+
 
 
  
