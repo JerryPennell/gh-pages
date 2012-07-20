@@ -45,14 +45,14 @@
 	          <span class="fieldpx">* fields are required.</span>
 	          <ul id="questions" data-inset="true">
 	               <li><label for="select">*Publisher:</label>
-	               <li id="err"><select id="groups" class="required" data-inset="true" data-mini="true" data-placeholder="true"><option value="-- Choose A Publisher --">-- Choose A Publisher --</option></select>
+	               <li id="err"><select id="groups" name="groups" class="required" data-inset="true" data-mini="true" data-placeholder="true"><option value="-- Choose A Publisher --">-- Choose A Publisher --</option></select>
 	               </li>
-	               <li><label for="cname">*Comic name:</label><input type="text" id="cname" name="cname" class="required" data-mini="true"/></li>
+	               <li><label for="cname">*Comic name:</label><input type="text" id="cname" name="cname" data-mini="true" class="required"/></li>
 	               <li><label for="iname">*Issue:</label><input type="text" id="iname" name="iname" data-mini="true" class="required number"/></li>
 	               <li><label for="email">*Collectors Email:</label><input type="email" id="email" name="email" data-mini="true" class="required email"/></li>
 	               <li>
 	                   <label>Have it?</label>
-	                   <ul class="checkbox">
+	                   <ul class="checkbx">
 	                      <li><input type="radio" id="yes" value="Yes" name="haveit" data-mini="true"><label for="yes">Yes</label></li>
 	                      <li><input type="radio" id="no" value="No" name="haveit" data-mini="true"><label for="no">No</label></li>
 	                   </ul>
@@ -61,7 +61,7 @@
 	               <li>
 	                  <label for="rating">Rating:</label>
 	                  <input placeholder="1" type="range" name="rating" id="rating" min="0" max="10" step="1" value="" data-mini="true"/>
-	                  <!-- <output name="display_rate" for="rating"></output> -->
+	                  <output name="display_rate" for="rating"></output>
 	               </li>
 	               <li><label for="date">Published:</label><input id="date" name="date" type="date" data-mini="true"/></li>
 	               <li><label for="notes">Notes</label><textarea placeholder="Enter in comic notes" id="notes" name="notes" data-mini="true"></textarea></li>
@@ -73,7 +73,7 @@
 	      <!-- begining of nav for testing data -->
 
 	      <nav id="nav">
-	          <a href="#" id="clear" class="sublinks">Clear Stored Data</a>
+	          <a href="#" id="clear" class="subClearlinks">Clear Stored Data</a>
 	          <!-- a href="#" id="displayLink" class="sublinks">Display Data</a-->
 	          <!-- a href="additem.html" rel="external" id="addNew" class="sublinks force-reload" style="display:none;">Add New Item</a -->
 	     </nav>
@@ -85,7 +85,7 @@
 		     <div data-role="navbar" data-iconpos="left">
 					<ul>
 						<li><a href="#browse"  id="browseDisplayLink" data-icon="grid">Browse</a></li>
-						<li><a href="../App B/index.html" rel="external" data-icon="gear">Bronze App Link</a></li>
+						<li><a href="../App%20B/index.html" rel="external" data-icon="gear">Bronze App Link</a></li>
 					</ul>
 			</div><!-- /navbar -->
            </div><!-- end footer -->
@@ -116,7 +116,7 @@
 		     <div data-role="navbar" data-iconpos="left">
 					<ul>
 						<li><a href="additem.html" rel="external" data-icon="plus">Add a comic</a></li>
-						<li><a href="../App B/index.html" rel="external" data-icon="gear">Bronze App Link</a></li>
+						<li><a href="../App%20B/index.html" rel="external" data-icon="gear">Bronze App Link</a></li>
 					</ul>
 			</div><!-- /navbar -->
            </div>

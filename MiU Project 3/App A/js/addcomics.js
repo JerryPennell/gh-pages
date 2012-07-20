@@ -36,7 +36,7 @@ $(document).bind('pageinit', function(){
     var today = now.getFullYear() + '-' + month + '-' + day;
     $('#date').val(today);
 
-  //$("#need").attr ("checked", "checked").checkboxradio ("refresh");
+  $("#need").attr ("checked", "checked").checkboxradio ("refresh");
 
   //loads form validation
   var comicfm = $('#comicForm');                                           //uses validator plugin to set form
@@ -47,7 +47,6 @@ $(document).bind('pageinit', function(){
             parseComicForm(data);
     }
   });
-
 
 
  

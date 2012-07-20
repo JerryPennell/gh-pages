@@ -10,8 +10,12 @@
 <body>
 
 <div data-role="page" id="home" data-theme="b">
-<div data-role="header">
- <h1>Grid Layout</h1>
+
+ <!-- Provides a header for jquery mobile -->
+<div data-role="header" data-position="fixed">
+	<a href="index.html" rel="external" data-icon="home" data-theme="b" >Home</a>
+	<br/>
+	 <h1>Grid Layout</h1>
 </div>
 <div data-role="content">
 <div class="ui-grid-b">
@@ -45,8 +49,8 @@
  <div data-role="footer" data-position="fixed" data-theme="b" data-mini="true">
     <div data-role="navbar" data-iconpos="left">
 	<ul>
-	   <li><a href="#" id="browseDisplayLink" data-icon="grid">Browse</a></li>
-	   <li><a href="../App B/index.html" rel="external" data-icon="gear">Bronze App Link</a></li>
+	   <li><a href="#" id="browseDisplayLink" data-icon="grid" class="ui-disabled">Grid pattern</a></li>
+	   <li><a href="../App A/index.html" rel="external" data-icon="gear">Gold App Link</a></li>
 	</ul>
     </div><!-- /navbar -->
 </div><!--end footer for search -->
