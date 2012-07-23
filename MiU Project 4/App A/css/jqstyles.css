@@ -1,0 +1,143 @@
+@charset "UTF-8";
+/* CSS Document */
+/* Jerry Pennell*/
+/* Term 1206    */
+/* Mobile Interfaces and Usability */
+/* Project 3    */
+   
+/* iPhone [portrait + landscape] */
+@media screen and (max-device-width: 485px){
+	
+/* All iPhone only CSS goes here */
+img{
+     max-width:100%;
+     height:auto;
+    }
+}
+
+#spaced {
+
+margin-left:18px;
+
+
+}
+ 
+ul {
+	-webkit-padding-start: 5px;
+}
+
+#questions{
+	-webkit-padding-start: 5px;
+}
+
+#loadarea{
+	 display:block;
+	 padding-top:250px; 
+}
+
+
+.sublinks{
+  margin-left:130px;
+  text-decoration:none;
+}
+
+.subClearlinks{
+  margin-left:100px;
+  text-decoration:none;
+}
+
+   
+   .front {
+	   text-align:left;
+	   margin-top:5px;
+	   background: #7D8A98;
+	   background: -webkit-gradient(linear, left top, left bottom, from(#CCC), to(#7D8A98));
+	   background: -webkit-linear-gradient(top, #CCC, #7D8A98);
+	   background: -moz-linear-gradient(top, #CCC, #7D8A98);
+	   background: -ms-linear-gradient(top, #CCC, #7D8A98);
+	   background: -o-linear-gradient(top, #CCC, #7D8A98);
+	   padding: 4px 25px;
+	   font-size: 15px;
+	   color:#000000;
+   }
+
+
+   .alig{
+	   margin-left:10px;
+   }
+   
+   .fieldpx {
+      margin-left:5px;
+   
+   }
+   
+   .redborder{
+     border:1px solid red;
+   }
+   
+   .checkbox{
+     width:95px;
+   }
+
+/* style for input fields */
+
+	
+	li {
+	color: #B4886B;
+	display: block;
+	width: auto;
+	margin-top:5px;
+	margin-bottom:5px;
+	margin-right:15px;
+	}
+	
+ 
+/* border background and outline of fieldset */
+
+   fieldset {
+    border-radius: 15px;   
+	border: 1px solid #666;
+	background: #FDFDE4;
+	padding: 3px;
+	margin-top:10px;
+   }
+   
+   .bordr {
+   border: 1px solid #000;
+   }
+   
+ /*fieldset legend color tab */  
+   
+   fieldset legend {
+	-webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;   
+	border: 1px solid # 333;      
+	background: #CCA383;
+	padding: 10px;
+	font-weight: bold;
+	margin-top:5px;
+	
+	}
+	
+   .tileset {
+    background: url(../images/tile.png);
+    background-size:auto;	
+    }
+
+
+ /* for js elements */
+ 
+    #genlist {
+	border: 0;
+	background-color: #666;
+	height: 5px;
+	}
+	
+/*validator plugin */
+	label.error{
+	display:block;
+	margin:10px;
+	color:#cc0000;
+	}
+	
