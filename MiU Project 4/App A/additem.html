@@ -17,10 +17,14 @@
 	<!-- begining of css -->
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link href="css/mobiscroll-2.0.1.custom.min.css" rel="stylesheet" type="text/css" />
 
 	<!-- JavaScript is normally at the end of the body, except for Modernizr which enables
          HTML5 elements & feature detects -->
     <script src="js/libs/modernizr.custom.min.js" type="text/javascript"></script>
+
+
+
 
  </head>
 
@@ -28,8 +32,8 @@
    <div data-role="page" id="additem">
 
      <div id="header" data-role="header" data-position="fixed">
+       <div class="logo"><img src="images/comiclogo.png" alt="comic collector logo">Comic Collector</div>
         <a href="index.html" rel="external" data-icon="home" data-theme="b" >Home</a>
-		<br/>
         <h1>Add Comic</h1>
     </div><!-- /header -->
 
@@ -39,7 +43,7 @@
 
 	   <!-- begining of comic form -->
 	    <form action="#" method="post" id="comicForm">
-	       <fieldset>
+	       <fieldset id="container">
 	          <legend>Comic Data</legend>
 	          <br/>
 	          <span class="fieldpx">* fields are required.</span>
@@ -63,7 +67,7 @@
 	                  <input placeholder="1" type="range" name="rating" id="rating" min="0" max="10" step="1" value="" data-mini="true"/>
 	                  <output name="display_rate" for="rating"></output>
 	               </li>
-	               <li><label for="date">Published:</label><input id="date" name="date" type="date" data-mini="true"/></li>
+	               <li><label for="date">Published:</label><input id="date" name="date" data-mini="true"/></li>
 	               <li><label for="notes">Notes</label><textarea placeholder="Enter in comic notes" id="notes" name="notes" data-mini="true"></textarea></li>
 	          </ul>
 	          <ul id="errors"></ul>
@@ -98,20 +102,20 @@
 
 			 <!-- Provides a header for jquery mobile -->
 	        <div data-role="header" data-position="fixed">
+	            <div class="logo"><img src="images/comiclogo.png" alt="comic collector logo">Comic Collector</div>
 				<a href="additem.html" rel="external" data-icon="back" data-theme="b">Back</a>
-				<br/>
 				<h1>Browse Comics</h1>
 				<a href="#search" data-icon="search" data-theme="b" class="ui-btn-right">Search</a>
 
 	        </div>
 
-	        <div data-role="content">
+	        <div data-role="content" class="tilelist">
                 <!--loads data -->
-                <div data-role="fieldcontain" id="jDataLoad">
-
-
-		        </div><!-- DATA LOAD-->
+                <div id="jDataLoad">
+              
+		        </div>
 	       </div><!-- content-->
+	       
 
 	        <!-- provides a footer for jquery mobile browse-->
 	       <div data-role="footer" data-position="fixed" data-theme="b" data-mini="true">
@@ -128,6 +132,7 @@
       <!-- JQuery mobile libraries -->
       <script src="http://code.jquery.com/jquery.min.js"></script> <!-- This breaks my code -->
 	  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+	  <script src="js/libs/mobiscroll-2.0.1.custom.min.js" type="text/javascript"></script>
 	  <script src="js/libs/jquery.defaultvalue.js" type="text/javascript"></script>
 	  <script src="js/libs/jquery.validate.min.js" type="text/javascript"></script>
 

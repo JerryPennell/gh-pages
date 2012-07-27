@@ -3,7 +3,7 @@
 /* Jerry Pennell*/
 /* Term 1206    */
 /* Mobile Interfaces and Usability */
-/* Project 3    */
+/* Project 4    */
    
 /* iPhone [portrait + landscape] */
 @media screen and (max-device-width: 485px){
@@ -13,6 +13,14 @@ img{
      max-width:100%;
      height:auto;
     }
+}
+
+.logo
+{
+    width:100%;
+    background-color:#000000;
+    padding-top:35px;
+    float:left;
 }
 
 #spaced {
@@ -125,6 +133,10 @@ ul {
     background-size:auto;	
     }
 
+.tilelist {
+    background: url(../images/seambak.png);
+    background-size:auto;	
+    }
 
  /* for js elements */
  
@@ -140,4 +152,63 @@ ul {
 	margin:10px;
 	color:#cc0000;
 	}
+	
+	
+	 .drop-shadow {
+            position:relative;
+            float:left;
+            width:240px;
+            padding:1em;
+            margin:0em 5px 2em;
+            background:#FDFDE4;
+            -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+               -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+                    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        }
+
+        .drop-shadow:before,
+        .drop-shadow:after {
+            content:"";
+            position:absolute;
+            z-index:-2;
+        }
+  
+        
+                /* Curled corners */
+
+        .curled {
+            border:1px solid #efefef;
+            -moz-border-radius:0 0 120px 120px / 0 0 6px 6px;
+                 border-radius:0 0 120px 120px / 0 0 6px 6px;
+        }
+
+        .curled:before,
+        .curled:after {
+            bottom:12px;
+            left:10px;
+            width:50%;
+            height:55%;
+            max-width:200px;
+            max-height:100px;
+            -webkit-box-shadow:0 8px 12px rgba(0, 0, 0, 0.5);
+               -moz-box-shadow:0 8px 12px rgba(0, 0, 0, 0.5);
+                    box-shadow:0 8px 12px rgba(0, 0, 0, 0.5);
+            -webkit-transform:skew(-8deg) rotate(-3deg);
+               -moz-transform:skew(-8deg) rotate(-3deg);
+                -ms-transform:skew(-8deg) rotate(-3deg);
+                 -o-transform:skew(-8deg) rotate(-3deg);
+                    transform:skew(-8deg) rotate(-3deg);
+        }
+
+        .curled:after {
+            right:10px;
+            left:auto;
+            -webkit-transform:skew(8deg) rotate(3deg);
+               -moz-transform:skew(8deg) rotate(3deg);
+                -ms-transform:skew(8deg) rotate(3deg);
+                 -o-transform:skew(8deg) rotate(3deg);
+                    transform:skew(8deg) rotate(3deg);
+        }
+
+
 	

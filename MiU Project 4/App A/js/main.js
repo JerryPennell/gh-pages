@@ -1,5 +1,5 @@
 //Jerry Pennell 1206
-//Project 3
+//Project 4
 //Visual Framworks (VFW)
 //Mobile Development
 //Full Sail University
@@ -105,6 +105,7 @@ window.addEventListener("DOMContentLoaded", function(){
          ge('items').style.display = "block";									//sets style for items to display
          for(var i=0, len=localStorage.length; i<len; i++){						//itterate the local storage
              var makeli = document.createElement('li');							//makes li tag
+             makeli.setAttribute("class","drop-shadow curled");
              var linksLi = document.createElement('li');					    //makes li tag for links edit-delete
              makeList.appendChild(makeli);										//appends li to ul
              var key = localStorage.key(i); 									//key for localstorage objects
@@ -169,7 +170,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		  editLink.href = "#additem";													//sets the value to pound tag
 		  editLink.rel = "external";
 		  editLink.key = key;													//gets the key for the item being edited
-		  var editText = "Edit Comic";									    	//Creates text of Edit comic	
+		  var editText = "Edit";									        	//Creates text of Edit comic	
 		  editLink.addEventListener("click", editItem);							//Adds the event listener for the edit item link
 		  editLink.setAttribute("class","sublinks");                            //Adds class sublinks for css
 		  editLink.innerHTML = editText;										//adds the link to the html
@@ -184,7 +185,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		  deleteLink.href = "additem.html";										//adds the link value to pound going same page
 		  deleteLink.rel ="external";
 		  deleteLink.key = key;													//sets the key to the comic being deleted
-		  var deleteText = "Delete Comic";										//creates the text to delete the comic
+		  var deleteText = "Delete";										    //creates the text to delete the comic
 		  deleteLink.addEventListener("click", deleteItem);						//adds the event listener to delete the item
 		  deleteLink.setAttribute("class","sublinks force-reload");
 		  deleteLink.innerHTML = deleteText;									//adds the link to the html

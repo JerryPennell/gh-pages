@@ -9,7 +9,8 @@ var parseComicForm = function(data){
         console.log(id);
         }
      }
-
+     
+   
 };
 
 $('a.force-reload').live('click', function(e) {
@@ -39,7 +40,6 @@ $('a.force-reload').live('click', function(e) {
 
 
 
-
 //Resets the form
 $('#reset').click(function() {
     $('#comicForm').clearForm(); 
@@ -51,23 +51,34 @@ $(document).bind('pageinit', function(){
     
  //Uses default lib to create the connection
  $('#rating, #notes').defaultValue();
-  
- //sets default date
- var now = new Date();
- var month = (now.getMonth() + 1);               
- var day = now.getDate();
-    if(month < 10) 
-        month = "0" + month;
-    if(day < 10) 
-        day = "0" + day;
-    var today = now.getFullYear() + '-' + month + '-' + day;
-    $('#date').val(today);
-    
-    
-    
-    
 
-  $("#need").attr ("checked", "checked").checkboxradio ("refresh");
+ $("#need").attr ("checked", "checked").checkboxradio ("refresh");
+ 
+ //sets default date
+  var now = new Date();
+  var month = (now.getMonth() + 1);               
+  var day = now.getDate();
+     if(month < 10) 
+         month = "0" + month;
+     if(day < 10) 
+         day = "0" + day;     
+     var today = month + '/' + day + '/' + now.getFullYear();
+    $('#date').val(today);
+ 
+ 
+ //Mobiscroll plugin
+ $('#date').scroller({
+          preset: 'date',         
+          theme: 'ios',
+          display: 'modal',
+          mode: 'scroller',
+  });    
+ 
+
+  
+ 
+ 
+
 
   //loads form validation
   var comicfm = $('#comicForm');                                           //uses validator plugin to set form
